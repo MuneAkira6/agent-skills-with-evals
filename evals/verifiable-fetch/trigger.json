@@ -1,0 +1,22 @@
+[
+  { "id": "pos-ja-save-with-attachments", "should_trigger": true, "query": "Redmine のチケット #4521 を添付ファイルごと Markdown に保存して。" },
+  { "id": "pos-ja-url-to-docs", "should_trigger": true, "query": "https://redmine.example.com/issues/812 を取得して docs/issues/ に置いて" },
+  { "id": "pos-en-archive-screenshots", "should_trigger": true, "query": "Archive Redmine issue 377 with all its screenshots into the archive/ folder." },
+  { "id": "pos-en-export-keep-attachments", "should_trigger": true, "query": "Can you export ticket #1203 from our Redmine to markdown? Keep the attachments." },
+  { "id": "pos-zh-download-with-attachments", "should_trigger": true, "query": "把 Redmine 上的 #2290 连同附件一起下载下来，存成 md" },
+  { "id": "pos-ja-check-every-image", "should_trigger": true, "query": "Redmine の #66 の添付画像、ちゃんと全部落ちているか確かめながら保存して" },
+  { "id": "pos-en-broken-pngs-last-time", "should_trigger": true, "query": "Pull issue 58 from redmine.acme.example and save the attachments locally — last time half the PNGs turned out to be HTML error pages." },
+  { "id": "pos-zh-archive-same-size", "should_trigger": true, "query": "帮我把 redmine 的工单 3145 存档，图片要和原文件大小一致" },
+  { "id": "pos-ja-describe-screenshots", "should_trigger": true, "query": "チケット 905 を Redmine から落として、スクリーンショットに何が写っているかも文章で書いておいて" },
+  { "id": "pos-en-journals-for-review", "should_trigger": true, "query": "Save Redmine ticket #77 and its journals as a local markdown file for the incident review." },
+  { "id": "neg-en-download-a-pdf", "should_trigger": false, "query": "Download this PDF for me: https://example.com/report.pdf" },
+  { "id": "neg-ja-polish-a-report", "should_trigger": false, "query": "この不具合報告の文面を、Redmine に貼れる形に整えて：ログインした後に画面が真っ白になる。" },
+  { "id": "neg-en-create-an-issue", "should_trigger": false, "query": "Create a new Redmine issue for the login bug with these steps to reproduce." },
+  { "id": "neg-zh-compare-trackers", "should_trigger": false, "query": "Redmine 和 Jira 哪个更适合十人左右的团队？" },
+  { "id": "neg-ja-github-comment", "should_trigger": false, "query": "GitHub の issue #12 にコメントを書いて" },
+  { "id": "neg-en-scrape-images", "should_trigger": false, "query": "Write a Python script that downloads every image on a web page." },
+  { "id": "neg-ja-convert-pngs", "should_trigger": false, "query": "screenshots/ にある PNG を全部 WebP に変換して" },
+  { "id": "neg-en-curl-403-question", "should_trigger": false, "query": "Why does curl save a 403 page under my file name? Explain the -f flag." },
+  { "id": "neg-zh-merge-markdown", "should_trigger": false, "query": "把 docs/ 下面的 markdown 合并成一个 PDF" },
+  { "id": "neg-en-backup-redmine-db", "should_trigger": false, "query": "Back up the Redmine database with mysqldump before the upgrade." }
+]

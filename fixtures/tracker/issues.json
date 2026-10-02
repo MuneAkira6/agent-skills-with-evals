@@ -1,0 +1,390 @@
+{
+  "//": "Redmine-shaped issues (keys of facts F19). {tracker} in content_url is replaced by the mock with its own origin. x-mock is read only by the mock and never served. Issue 105 does not exist.",
+  "issues": [
+    {
+      "id": 101,
+      "project": {
+        "id": 1,
+        "name": "Acme Tasks"
+      },
+      "tracker": {
+        "id": 1,
+        "name": "Bug"
+      },
+      "status": {
+        "id": 2,
+        "name": "In Progress"
+      },
+      "priority": {
+        "id": 3,
+        "name": "High"
+      },
+      "author": {
+        "id": 12,
+        "name": "鈴木 蓮"
+      },
+      "assigned_to": {
+        "id": 11,
+        "name": "田中 葵"
+      },
+      "subject": "ボード画面でカードの並び順が保存されない",
+      "description": "ボード画面でカードをドラッグして並べ替えても、再読み込みすると元の順番に戻ります。\n\n## 再現手順\n\n1. ボード画面を開く\n2. 一番下のカードを一番上へドラッグする\n3. ページを再読み込みする\n\n## 期待する結果\n\n並べ替えた順番のまま表示される。",
+      "start_date": "2026-09-28",
+      "due_date": null,
+      "done_ratio": 0,
+      "is_private": false,
+      "estimated_hours": null,
+      "total_estimated_hours": null,
+      "created_on": "2026-09-28T01:15:00Z",
+      "updated_on": "2026-09-30T06:40:00Z",
+      "closed_on": null,
+      "attachments": [
+        {
+          "id": 301,
+          "filename": "board-before.png",
+          "filesize": 812,
+          "content_type": "image/png",
+          "description": "並べ替える前",
+          "content_url": "{tracker}/attachments/download/301/board-before.png",
+          "author": {
+            "id": 12,
+            "name": "鈴木 蓮"
+          },
+          "created_on": "2026-09-28T01:16:00Z",
+          "x-mock": {
+            "mode": "direct",
+            "file": "board-before.png"
+          }
+        },
+        {
+          "id": 302,
+          "filename": "board-after.png",
+          "filesize": 812,
+          "content_type": "image/png",
+          "description": "再読み込みした後",
+          "content_url": "{tracker}/attachments/download/302/board-after.png",
+          "author": {
+            "id": 12,
+            "name": "鈴木 蓮"
+          },
+          "created_on": "2026-09-28T01:16:30Z",
+          "x-mock": {
+            "mode": "signed",
+            "file": "board-after.png"
+          }
+        }
+      ],
+      "journals": [
+        {
+          "id": 1001,
+          "user": {
+            "id": 11,
+            "name": "田中 葵"
+          },
+          "notes": "再現しました。並べ替えた直後は正しく、再読み込みで元に戻ります。",
+          "created_on": "2026-09-29T02:00:00Z",
+          "private_notes": false,
+          "details": [
+            {
+              "property": "attr",
+              "name": "status_id",
+              "old_value": "1",
+              "new_value": "2"
+            }
+          ]
+        },
+        {
+          "id": 1002,
+          "user": {
+            "id": 12,
+            "name": "鈴木 蓮"
+          },
+          "notes": "画像を 2 枚添付しました。",
+          "created_on": "2026-09-30T06:40:00Z",
+          "private_notes": false,
+          "details": []
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "project": {
+        "id": 1,
+        "name": "Acme Tasks"
+      },
+      "tracker": {
+        "id": 1,
+        "name": "Bug"
+      },
+      "status": {
+        "id": 1,
+        "name": "New"
+      },
+      "priority": {
+        "id": 2,
+        "name": "Normal"
+      },
+      "author": {
+        "id": 15,
+        "name": "加藤 結衣"
+      },
+      "assigned_to": {
+        "id": 14,
+        "name": "伊藤 海"
+      },
+      "subject": "CSV エクスポートが途中で止まる",
+      "description": "件数が多いプロジェクトで CSV エクスポートを実行すると、進捗表示が 4 割ほどで止まります。ログとスクリーンショットを添付します。",
+      "start_date": "2026-09-29",
+      "due_date": null,
+      "done_ratio": 0,
+      "is_private": false,
+      "estimated_hours": null,
+      "total_estimated_hours": null,
+      "created_on": "2026-09-29T04:00:00Z",
+      "updated_on": "2026-10-01T03:10:00Z",
+      "closed_on": null,
+      "attachments": [
+        {
+          "id": 303,
+          "filename": "export-dialog.png",
+          "filesize": 617,
+          "content_type": "image/png",
+          "description": "止まったときの画面",
+          "content_url": "{tracker}/attachments/download/303/export-dialog.png",
+          "author": {
+            "id": 15,
+            "name": "加藤 結衣"
+          },
+          "created_on": "2026-09-29T04:01:00Z",
+          "x-mock": {
+            "mode": "signed",
+            "file": "export-dialog.png"
+          }
+        },
+        {
+          "id": 304,
+          "filename": "export-log.zip",
+          "filesize": 3145728,
+          "content_type": "application/zip",
+          "description": "サーバーのログ",
+          "content_url": "{tracker}/attachments/download/304/export-log.zip",
+          "author": {
+            "id": 15,
+            "name": "加藤 結衣"
+          },
+          "created_on": "2026-09-29T04:02:00Z",
+          "x-mock": {
+            "mode": "signed",
+            "generated": "xorshift32-zip"
+          }
+        },
+        {
+          "id": 305,
+          "filename": "gateway-screenshot.png",
+          "filesize": 23456,
+          "content_type": "image/png",
+          "description": "社内からの再現",
+          "content_url": "{tracker}/attachments/download/305/gateway-screenshot.png",
+          "author": {
+            "id": 14,
+            "name": "伊藤 海"
+          },
+          "created_on": "2026-10-01T03:05:00Z",
+          "x-mock": {
+            "mode": "blocked"
+          }
+        },
+        {
+          "id": 306,
+          "filename": "settings.png",
+          "filesize": 18204,
+          "content_type": "image/png",
+          "description": "エクスポート設定",
+          "content_url": "{tracker}/attachments/download/306/settings.png",
+          "author": {
+            "id": 14,
+            "name": "伊藤 海"
+          },
+          "created_on": "2026-10-01T03:06:00Z",
+          "x-mock": {
+            "mode": "login-page"
+          }
+        }
+      ],
+      "journals": [
+        {
+          "id": 1003,
+          "user": {
+            "id": 14,
+            "name": "伊藤 海"
+          },
+          "notes": "社内環境でも再現しました。スクリーンショットを 2 枚追加します。",
+          "created_on": "2026-10-01T03:10:00Z",
+          "private_notes": false,
+          "details": []
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "project": {
+        "id": 1,
+        "name": "Acme Tasks"
+      },
+      "tracker": {
+        "id": 2,
+        "name": "Feature"
+      },
+      "status": {
+        "id": 1,
+        "name": "New"
+      },
+      "priority": {
+        "id": 2,
+        "name": "Normal"
+      },
+      "author": {
+        "id": 13,
+        "name": "森 芽衣"
+      },
+      "assigned_to": {
+        "id": 13,
+        "name": "森 芽衣"
+      },
+      "subject": "通知設定の文言を見直す",
+      "description": "通知設定画面の説明文が分かりにくいという声があります。変更前後の案を添付します。",
+      "start_date": "2026-09-30",
+      "due_date": null,
+      "done_ratio": 0,
+      "is_private": false,
+      "estimated_hours": null,
+      "total_estimated_hours": null,
+      "created_on": "2026-09-30T00:30:00Z",
+      "updated_on": "2026-10-02T01:00:00Z",
+      "closed_on": null,
+      "attachments": [
+        {
+          "id": 307,
+          "filename": "notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png",
+          "filesize": 316,
+          "content_type": "image/png",
+          "description": "文言の比較",
+          "content_url": "{tracker}/attachments/download/307/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png",
+          "author": {
+            "id": 13,
+            "name": "森 芽衣"
+          },
+          "created_on": "2026-09-30T00:31:00Z",
+          "x-mock": {
+            "mode": "direct",
+            "file": "wording.png"
+          }
+        },
+        {
+          "id": 308,
+          "filename": "通知:設定?.png",
+          "filesize": 739,
+          "content_type": "image/png",
+          "description": "通知アイコン",
+          "content_url": "{tracker}/attachments/download/308/%E9%80%9A%E7%9F%A5%3A%E8%A8%AD%E5%AE%9A%3F.png",
+          "author": {
+            "id": 13,
+            "name": "森 芽衣"
+          },
+          "created_on": "2026-09-30T00:32:00Z",
+          "x-mock": {
+            "mode": "direct",
+            "file": "notice.png"
+          }
+        }
+      ],
+      "journals": [
+        {
+          "id": 1004,
+          "user": {
+            "id": 13,
+            "name": "森 芽衣"
+          },
+          "notes": "文言案を添付しました。",
+          "created_on": "2026-10-02T01:00:00Z",
+          "private_notes": false,
+          "details": []
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "project": {
+        "id": 1,
+        "name": "Acme Tasks"
+      },
+      "tracker": {
+        "id": 3,
+        "name": "Support"
+      },
+      "status": {
+        "id": 4,
+        "name": "Feedback"
+      },
+      "priority": {
+        "id": 2,
+        "name": "Normal"
+      },
+      "author": {
+        "id": 11,
+        "name": "田中 葵"
+      },
+      "assigned_to": {
+        "id": 12,
+        "name": "鈴木 蓮"
+      },
+      "subject": "添付の一部が開けない",
+      "description": "先週添付したファイルのうち、開けないものがあるという問い合わせです。",
+      "start_date": "2026-10-01",
+      "due_date": null,
+      "done_ratio": 0,
+      "is_private": false,
+      "estimated_hours": null,
+      "total_estimated_hours": null,
+      "created_on": "2026-10-01T00:00:00Z",
+      "updated_on": "2026-10-01T00:20:00Z",
+      "closed_on": null,
+      "attachments": [
+        {
+          "id": 309,
+          "filename": "missing.png",
+          "filesize": 4096,
+          "content_type": "image/png",
+          "description": "削除されたファイル",
+          "content_url": "{tracker}/attachments/download/309/missing.png",
+          "author": {
+            "id": 11,
+            "name": "田中 葵"
+          },
+          "created_on": "2026-10-01T00:01:00Z",
+          "x-mock": {
+            "mode": "missing"
+          }
+        },
+        {
+          "id": 310,
+          "filename": "partial.png",
+          "filesize": 548,
+          "content_type": "image/png",
+          "description": "途中で切れるファイル",
+          "content_url": "{tracker}/attachments/download/310/partial.png",
+          "author": {
+            "id": 11,
+            "name": "田中 葵"
+          },
+          "created_on": "2026-10-01T00:02:00Z",
+          "x-mock": {
+            "mode": "truncated",
+            "file": "partial.png"
+          }
+        }
+      ],
+      "journals": []
+    }
+  ]
+}

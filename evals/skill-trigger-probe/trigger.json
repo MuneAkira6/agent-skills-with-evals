@@ -1,0 +1,22 @@
+[
+  { "id": "pos-ja-measure-rate", "should_trigger": true, "query": "このスキルがちゃんと呼ばれるか、起動率を測りたい" },
+  { "id": "pos-en-twenty-queries", "should_trigger": true, "query": "Measure how often my invoice-export skill triggers on these 20 queries." },
+  { "id": "pos-zh-pos-neg-after-edit", "should_trigger": true, "query": "我的 skill 描述改了之后，帮我测一下正例和反例的触发率" },
+  { "id": "pos-en-zero-on-windows", "should_trigger": true, "query": "The skill-creator trigger eval reports 0% on Windows every single time. Is it broken? Measure it another way." },
+  { "id": "pos-ja-description-limit", "should_trigger": true, "query": "SKILL.md の description が長すぎないか、仕様の上限に照らしてチェックして" },
+  { "id": "pos-en-validate-frontmatter", "should_trigger": true, "query": "Validate the frontmatter of every skill under .claude/skills against the Agent Skills spec." },
+  { "id": "pos-zh-which-skill-fired", "should_trigger": true, "query": "这个 skill 老是被别的 skill 抢走，帮我查一下实际触发的是哪个 skill" },
+  { "id": "pos-ja-033-verdict", "should_trigger": true, "query": "起動判定のテストを 3 回ずつ回したら 0.33 だった。これで不合格と判断していい？" },
+  { "id": "pos-en-before-shipping", "should_trigger": true, "query": "Before I ship this skill, run positive and near-miss negative prompts through claude -p and report the trigger rate." },
+  { "id": "pos-ja-stopped-triggering", "should_trigger": true, "query": "説明文を書き換えたら起動しなくなった気がする。数字で確かめて" },
+  { "id": "neg-en-write-a-skill", "should_trigger": false, "query": "Write a new skill that formats SQL queries." },
+  { "id": "neg-ja-output-quality-ab", "should_trigger": false, "query": "このスキルの出力の品質を、スキルなしの場合と比べて評価して" },
+  { "id": "neg-zh-unit-test", "should_trigger": false, "query": "帮我写一个 Vitest 单元测试，测 parseFrontmatter 这个函数" },
+  { "id": "neg-en-skill-vs-command", "should_trigger": false, "query": "What's the difference between a skill and a slash command in Claude Code?" },
+  { "id": "neg-ja-yaml-to-json", "should_trigger": false, "query": "YAML のフロントマターを JSON に変換するスクリプトを書いて" },
+  { "id": "neg-en-hooks-on-windows", "should_trigger": false, "query": "My Claude Code hooks don't fire on Windows. Debug it." },
+  { "id": "neg-zh-count-lines", "should_trigger": false, "query": "统计一下这个仓库里每种语言的代码行数" },
+  { "id": "neg-ja-prompt-ab", "should_trigger": false, "query": "プロンプトの A/B テストをして、どちらの言い回しのほうが短く答えるか比べて" },
+  { "id": "neg-en-api-latency", "should_trigger": false, "query": "Measure the latency of our API endpoints under load." },
+  { "id": "neg-ja-mcp-config", "should_trigger": false, "query": "MCP サーバーの設定が読み込まれているか確認して" }
+]

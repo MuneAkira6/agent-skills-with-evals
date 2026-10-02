@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.png binary
+# Fixtures are kept byte for byte: the PNG sizes and checksums are part of the evals.
+fixtures/** -text

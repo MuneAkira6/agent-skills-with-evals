@@ -1,0 +1,7 @@
+node_modules/
+.claude/
+out/
+reports/
+
+# raw transcripts and workspaces of the A/B runs (the committed results are under evals/<skill>/results/)
+evals/.runs/

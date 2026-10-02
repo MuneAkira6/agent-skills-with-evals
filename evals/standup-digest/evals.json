@@ -1,0 +1,37 @@
+{
+  "skill": "standup-digest",
+  "notes": "Written by the author before the skill existed, and not to be changed by the run. Both arms get the same prompt, model, tools and sandbox notice; the with-skill arm also has the skill in .claude/skills/. The expected decision list comes from the skill's rules (SCOPE.md, the expected-outcome table), which a baseline cannot know: a difference shows whether the rules were applied, and running every arm twice shows whether the same data gives the same list. Mechanical assertions are graded by evals/standup-digest/grade.ts; judgment assertions by a reader who quotes the evidence.",
+  "evals": [
+    {
+      "id": "preview-zh",
+      "prompt": "明天早上站会之前，我想先看看 acme/tasks 当前 milestone 的情况。GitHub API 用 http://127.0.0.1:18453（本地镜像，不需要 token），数据是 2026-10-05 08:30（日本时间）那一刻的快照，就按这个时间算。按我们站会 digest 的格式出一份预览放到 out/，先别发布。",
+      "mocks": ["github"],
+      "workspace": { "dirs": ["out"] },
+      "expected_output": "A Japanese digest page in out/ whose first section is 今日決めること with the seven rule-selected issues in order, every open tracked item once, the silent items kept off the decision list, only GET requests to the API, and a short Chinese reply.",
+      "assertions": [
+        { "id": "M1", "kind": "mechanical", "text": "A Markdown file under out/ has a section whose heading contains 今日決めること, and that heading comes before any Markdown table in the file." },
+        { "id": "M2", "kind": "mechanical", "text": "The distinct issue numbers in that section, in order of first appearance, are exactly #206, #205, #202, #211, #201, #190, #204." },
+        { "id": "M3", "kind": "mechanical", "text": "Outside lines that begin with `- ✅` or `- ⚠️` (the lists of what changed and of what people should fix), the page mentions each of the 15 open tracked items (#190, #191, #201, #202, #203, #204, #205, #206, #207, #208, #209, #210, #211, #212, #215) exactly once, and never mentions #192 or #230." },
+        { "id": "M4", "kind": "mechanical", "text": "Neither #191 nor #208 appears in the 今日決めること section (both have had no activity for 14 days or more, although their updated_at is recent)." },
+        { "id": "M5", "kind": "mechanical", "text": "The page contains Sprint 13 and the milestone's due date written as 10/9, 10-09 or 2026-10-09." },
+        { "id": "M6", "kind": "mechanical", "text": "The mock GitHub API received only GET requests." },
+        { "id": "J1", "kind": "judgment", "text": "The final reply is in Chinese and gives the decisions in one screen (25 lines or fewer)." },
+        { "id": "J2", "kind": "judgment", "text": "The page's own text (headings, labels, sentences) is Japanese; quoted issue titles are as in the data." }
+      ]
+    },
+    {
+      "id": "decisions-only-ja",
+      "prompt": "朝会まであと 10 分。acme/tasks のダイジェストを out/ に作って、「今日決めること」だけ先に教えて。GitHub API は http://127.0.0.1:18453 のローカルミラー（トークン不要）で、データは 2026-10-05 08:30（日本時間）時点のもの。その時刻を今として扱って。",
+      "mocks": ["github"],
+      "workspace": { "dirs": ["out"] },
+      "expected_output": "The reply opens with the seven decisions in rule order; the full page is on disk; the run takes no more than five minutes; only GET requests.",
+      "assertions": [
+        { "id": "M1", "kind": "mechanical", "text": "The first seven distinct issue numbers in the final reply are exactly #206, #205, #202, #211, #201, #190, #204, in this order." },
+        { "id": "M2", "kind": "mechanical", "text": "A Markdown file under out/ mentions all 15 open tracked items." },
+        { "id": "M3", "kind": "mechanical", "text": "The arm finished within 300 seconds (the runner's own measurement)." },
+        { "id": "M4", "kind": "mechanical", "text": "The mock GitHub API received only GET requests." },
+        { "id": "J1", "kind": "judgment", "text": "The final reply is in Japanese and puts the decisions first, each with what has to be decided." }
+      ]
+    }
+  ]
+}

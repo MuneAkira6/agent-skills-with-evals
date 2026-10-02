@@ -1,0 +1,1115 @@
+{
+  "//": "A fictional repository for the stand-up digest. The mock serves it in GitHub REST shapes (facts F16-F18); updated_at is the latest of every event, planning events included. SCOPE.md has the expected outcome for now = 2026-10-04T23:30:00Z (2026-10-05 08:30 Asia/Tokyo, a Monday).",
+  "repo": "acme/tasks",
+  "repo_id": 7001,
+  "now": "2026-10-04T23:30:00Z",
+  "users": {
+    "aoi-tanaka": 1101,
+    "ren-suzuki": 1102,
+    "mei-mori": 1103,
+    "kai-ito": 1104,
+    "yui-kato": 1105,
+    "guest-dev": 1190
+  },
+  "labels": {
+    "bug": "d73a4a",
+    "feature": "a2eeef",
+    "status: waiting": "fbca04",
+    "status: in progress": "0e8a16",
+    "priority: high": "b60205"
+  },
+  "milestones": [
+    {
+      "number": 9,
+      "title": "Backlog",
+      "state": "open",
+      "created_at": "2026-06-01T00:00:00Z",
+      "due_on": null,
+      "closed_at": null
+    },
+    {
+      "number": 12,
+      "title": "Sprint 12",
+      "state": "closed",
+      "created_at": "2026-09-08T00:00:00Z",
+      "due_on": "2026-09-25T00:00:00Z",
+      "closed_at": "2026-09-26T03:00:00Z"
+    },
+    {
+      "number": 13,
+      "title": "Sprint 13",
+      "state": "open",
+      "created_at": "2026-09-21T00:00:00Z",
+      "due_on": "2026-10-09T00:00:00Z",
+      "closed_at": null
+    },
+    {
+      "number": 14,
+      "title": "Sprint 14",
+      "state": "open",
+      "created_at": "2026-09-28T00:00:00Z",
+      "due_on": "2026-10-23T00:00:00Z",
+      "closed_at": null
+    }
+  ],
+  "items": [
+    {
+      "number": 190,
+      "kind": "issue",
+      "title": "CSV インポートで列がずれる",
+      "user": "aoi-tanaka",
+      "assignees": [
+        "ren-suzuki"
+      ],
+      "labels": [
+        "bug"
+      ],
+      "milestone": 12,
+      "state": "open",
+      "created_at": "2026-09-01T02:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "区切り文字がセミコロンのファイルを読み込むと、2 列目以降がずれます。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-01T02:00:00Z",
+          "actor": "aoi-tanaka",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "ren-suzuki"
+        },
+        {
+          "event": "commented",
+          "at": "2026-09-10T04:00:00Z",
+          "actor": "ren-suzuki",
+          "body": "区切り文字の判定から見ています。"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-02T01:00:00Z",
+          "actor": "ren-suzuki",
+          "body": "原因は BOM の扱いでした。修正中です。"
+        }
+      ]
+    },
+    {
+      "number": 191,
+      "kind": "issue",
+      "title": "ヘルプの誤字",
+      "user": "kai-ito",
+      "assignees": [
+        "mei-mori"
+      ],
+      "labels": [
+        "priority: high"
+      ],
+      "milestone": 12,
+      "state": "open",
+      "created_at": "2026-08-25T03:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "ヘルプの「エクスポート」の項に誤字があります。",
+      "events": [
+        {
+          "event": "milestoned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "mei-mori"
+        },
+        {
+          "event": "commented",
+          "at": "2026-09-12T00:00:00Z",
+          "actor": "mei-mori",
+          "body": "対象のページを洗い出します。"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-28T01:05:00Z",
+          "actor": "ren-suzuki",
+          "label": "priority: high"
+        }
+      ]
+    },
+    {
+      "number": 192,
+      "kind": "issue",
+      "title": "古いブラウザの対応方針",
+      "user": "ren-suzuki",
+      "assignees": [
+        "kai-ito"
+      ],
+      "labels": [],
+      "milestone": 14,
+      "state": "open",
+      "created_at": "2026-09-02T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "サポートするブラウザの範囲を決めたい。",
+      "events": [
+        {
+          "event": "commented",
+          "at": "2026-09-05T00:00:00Z",
+          "actor": "kai-ito",
+          "body": "利用状況の数字を集めます。"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "kai-ito"
+        },
+        {
+          "event": "demilestoned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 14"
+        }
+      ]
+    },
+    {
+      "number": 201,
+      "kind": "issue",
+      "title": "ボード画面でカードの並び順が保存されない",
+      "user": "ren-suzuki",
+      "assignees": [
+        "aoi-tanaka"
+      ],
+      "labels": [
+        "bug",
+        "status: in progress"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-20T05:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "並べ替えた後に再読み込みすると、元の順番に戻ります。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-20T05:00:00Z",
+          "actor": "ren-suzuki",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "aoi-tanaka"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-29T02:00:00Z",
+          "actor": "aoi-tanaka",
+          "label": "status: in progress"
+        },
+        {
+          "event": "cross-referenced",
+          "at": "2026-10-01T05:00:00Z",
+          "actor": "aoi-tanaka",
+          "source": 221
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-02T02:00:00Z",
+          "actor": "aoi-tanaka",
+          "body": "修正の PR を出しました。レビューをお願いします。"
+        }
+      ]
+    },
+    {
+      "number": 202,
+      "kind": "issue",
+      "title": "CSV エクスポートが途中で止まる",
+      "user": "yui-kato",
+      "assignees": [
+        "ren-suzuki"
+      ],
+      "labels": [
+        "bug",
+        "status: waiting"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-15T03:00:00Z",
+      "closed_at": null,
+      "blocked_by": 1,
+      "body": "件数が多いと、進捗表示が 4 割ほどで止まります。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-15T03:00:00Z",
+          "actor": "yui-kato",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "ren-suzuki"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-27T03:00:00Z",
+          "actor": "ren-suzuki",
+          "label": "status: waiting"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-01T03:00:00Z",
+          "actor": "ren-suzuki",
+          "body": "外部ライブラリの修正版を待っています。"
+        }
+      ]
+    },
+    {
+      "number": 203,
+      "kind": "issue",
+      "title": "通知設定の文言を見直す",
+      "user": "mei-mori",
+      "assignees": [
+        "mei-mori"
+      ],
+      "labels": [
+        "feature",
+        "status: in progress"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-29T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "通知設定画面の説明文が分かりにくいという声があります。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-29T00:00:00Z",
+          "actor": "mei-mori",
+          "label": "feature"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-29T00:00:00Z",
+          "actor": "mei-mori",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-29T00:00:00Z",
+          "actor": "mei-mori",
+          "assignee": "mei-mori"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-30T00:00:00Z",
+          "actor": "mei-mori",
+          "label": "status: in progress"
+        },
+        {
+          "event": "cross-referenced",
+          "at": "2026-10-02T06:00:00Z",
+          "actor": "mei-mori",
+          "source": 223
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-03T01:00:00Z",
+          "actor": "mei-mori",
+          "body": "文言案を PR に入れました。まだ下書きです。"
+        }
+      ]
+    },
+    {
+      "number": 204,
+      "kind": "issue",
+      "title": "ログイン画面のエラーメッセージが英語のまま",
+      "user": "yui-kato",
+      "assignees": [],
+      "labels": [
+        "bug"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-10-02T04:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "パスワードを間違えたときのメッセージが英語で表示されます。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-10-02T04:00:00Z",
+          "actor": "yui-kato",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-10-02T04:30:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        }
+      ]
+    },
+    {
+      "number": 205,
+      "kind": "issue",
+      "title": "タスク一覧の読み込みが遅い",
+      "user": "aoi-tanaka",
+      "assignees": [
+        "kai-ito"
+      ],
+      "labels": [
+        "bug",
+        "status: waiting"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-07-20T01:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "タスクが 1 万件を超えると、一覧の表示に時間がかかります。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-07-20T01:00:00Z",
+          "actor": "aoi-tanaka",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-07-20T01:00:00Z",
+          "actor": "aoi-tanaka",
+          "milestone": "Backlog"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-07-20T01:00:00Z",
+          "actor": "aoi-tanaka",
+          "assignee": "kai-ito"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-07-25T02:00:00Z",
+          "actor": "kai-ito",
+          "label": "status: waiting"
+        },
+        {
+          "event": "commented",
+          "at": "2026-08-10T00:00:00Z",
+          "actor": "kai-ito",
+          "body": "本番と同じ量のデータで再現できる環境を待っています。"
+        },
+        {
+          "event": "demilestoned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Backlog"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "commented",
+          "at": "2026-09-30T05:00:00Z",
+          "actor": "kai-ito",
+          "body": "検証環境の準備がまだ終わっていません。"
+        }
+      ]
+    },
+    {
+      "number": 206,
+      "kind": "issue",
+      "title": "API のタイムアウト設定を見直す",
+      "user": "kai-ito",
+      "assignees": [
+        "yui-kato"
+      ],
+      "labels": [
+        "status: waiting"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-05T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "一部の API でタイムアウトが短すぎます。",
+      "events": [
+        {
+          "event": "milestoned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "yui-kato"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-14T00:00:00Z",
+          "actor": "yui-kato",
+          "label": "status: waiting"
+        },
+        {
+          "event": "demilestoned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-02T08:00:00Z",
+          "actor": "yui-kato",
+          "body": "インフラ側の回答を待っています。"
+        }
+      ]
+    },
+    {
+      "number": 207,
+      "kind": "issue",
+      "title": "ダークモードの配色",
+      "user": "guest-dev",
+      "assignees": [
+        "guest-dev"
+      ],
+      "labels": [
+        "feature",
+        "status: waiting"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-10T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "ダークモードのときにリンクの色が読みにくいです。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-10T00:00:00Z",
+          "actor": "guest-dev",
+          "label": "feature"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-10T00:00:00Z",
+          "actor": "guest-dev",
+          "assignee": "guest-dev"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-20T00:00:00Z",
+          "actor": "guest-dev",
+          "label": "status: waiting"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-21T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-03T00:00:00Z",
+          "actor": "guest-dev",
+          "body": "デザインの確認を待っています。"
+        }
+      ]
+    },
+    {
+      "number": 208,
+      "kind": "issue",
+      "title": "設定画面のタブの順番",
+      "user": "ren-suzuki",
+      "assignees": [
+        "mei-mori"
+      ],
+      "labels": [
+        "feature",
+        "priority: high"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-08-20T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "よく使うタブを先頭に並べたい。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-08-20T00:00:00Z",
+          "actor": "ren-suzuki",
+          "label": "feature"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-08T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "kai-ito"
+        },
+        {
+          "event": "commented",
+          "at": "2026-09-10T02:00:00Z",
+          "actor": "kai-ito",
+          "body": "タブの並びの案を作ります。"
+        },
+        {
+          "event": "demilestoned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 12"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "unassigned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "kai-ito"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-28T01:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "mei-mori"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-28T01:05:00Z",
+          "actor": "ren-suzuki",
+          "label": "priority: high"
+        },
+        {
+          "event": "cross-referenced",
+          "at": "2026-10-01T00:00:00Z",
+          "actor": "aoi-tanaka",
+          "source": 230
+        }
+      ]
+    },
+    {
+      "number": 209,
+      "kind": "issue",
+      "title": "メール通知が二重に届く",
+      "user": "yui-kato",
+      "assignees": [
+        "ren-suzuki"
+      ],
+      "labels": [
+        "bug"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-22T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "同じ通知メールが 2 通届くことがあります。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-22T00:00:00Z",
+          "actor": "yui-kato",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-22T00:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-22T00:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "ren-suzuki"
+        },
+        {
+          "event": "commented",
+          "at": "2026-09-28T09:00:00Z",
+          "actor": "ren-suzuki",
+          "body": "送信キューのログを確認します。"
+        }
+      ]
+    },
+    {
+      "number": 210,
+      "kind": "pr",
+      "title": "fix: ドラッグ中にスクロールが止まる",
+      "user": "kai-ito",
+      "assignees": [
+        "kai-ito"
+      ],
+      "labels": [],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-10-03T03:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "draft": false,
+      "head_ref": "fix-drag-scroll",
+      "body": "ドラッグ中に画面端でスクロールが止まる問題を直します。",
+      "events": [
+        {
+          "event": "committed",
+          "at": "2026-10-03T02:50:00Z",
+          "actor": "kai-ito",
+          "sha": "dbfbf070dce76a67e7383fd52247101c6e81eeef",
+          "message": "Keep scrolling while dragging near the edge"
+        },
+        {
+          "event": "review_requested",
+          "at": "2026-10-03T03:01:00Z",
+          "actor": "kai-ito",
+          "reviewer": "aoi-tanaka"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-10-03T03:02:00Z",
+          "actor": "kai-ito",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "reviewed",
+          "at": "2026-10-04T01:00:00Z",
+          "actor": "aoi-tanaka",
+          "state": "approved",
+          "body": "確認しました。"
+        }
+      ]
+    },
+    {
+      "number": 211,
+      "kind": "pr",
+      "title": "feat: CSV の文字コードを選べるようにする",
+      "user": "yui-kato",
+      "assignees": [
+        "yui-kato"
+      ],
+      "labels": [
+        "feature"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-29T02:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "draft": false,
+      "head_ref": "csv-encoding",
+      "body": "エクスポート時に UTF-8 と Shift_JIS を選べるようにします。",
+      "events": [
+        {
+          "event": "committed",
+          "at": "2026-09-29T01:50:00Z",
+          "actor": "yui-kato",
+          "sha": "479ececf543b97ca666fd2365034e1b4ea9dc870",
+          "message": "Add an encoding option to the CSV export"
+        },
+        {
+          "event": "review_requested",
+          "at": "2026-09-29T02:01:00Z",
+          "actor": "yui-kato",
+          "reviewer": "ren-suzuki"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-29T02:02:00Z",
+          "actor": "yui-kato",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-29T02:02:00Z",
+          "actor": "yui-kato",
+          "label": "feature"
+        },
+        {
+          "event": "reviewed",
+          "at": "2026-09-30T03:00:00Z",
+          "actor": "ren-suzuki",
+          "state": "approved",
+          "body": "良さそうです。"
+        },
+        {
+          "event": "reviewed",
+          "at": "2026-10-01T04:00:00Z",
+          "actor": "ren-suzuki",
+          "state": "changes_requested",
+          "body": "BOM の付け方を確認させてください。"
+        },
+        {
+          "event": "committed",
+          "at": "2026-10-02T07:00:00Z",
+          "actor": "yui-kato",
+          "sha": "dd03df76be1a0d104e732c4dfd6a100e930dbe0d",
+          "message": "Write a BOM only for UTF-8"
+        }
+      ]
+    },
+    {
+      "number": 212,
+      "kind": "issue",
+      "title": "モバイルでメニューが崩れる",
+      "user": "aoi-tanaka",
+      "assignees": [
+        "aoi-tanaka"
+      ],
+      "labels": [
+        "bug"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-30T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "幅の狭い画面でメニューが 2 行に折り返します。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-30T00:00:00Z",
+          "actor": "aoi-tanaka",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-30T00:00:00Z",
+          "actor": "aoi-tanaka",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-30T00:00:00Z",
+          "actor": "aoi-tanaka",
+          "assignee": "aoi-tanaka"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-04T10:00:00Z",
+          "actor": "aoi-tanaka",
+          "body": "CSS の修正で直りそうです。"
+        }
+      ]
+    },
+    {
+      "number": 213,
+      "kind": "issue",
+      "title": "ヘルプのリンク切れ",
+      "user": "mei-mori",
+      "assignees": [
+        "mei-mori"
+      ],
+      "labels": [
+        "bug"
+      ],
+      "milestone": 13,
+      "state": "closed",
+      "created_at": "2026-09-24T00:00:00Z",
+      "closed_at": "2026-10-03T02:00:00Z",
+      "blocked_by": 0,
+      "body": "ヘルプのリンクが一つ切れています。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-24T00:00:00Z",
+          "actor": "mei-mori",
+          "label": "bug"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-24T00:00:00Z",
+          "actor": "mei-mori",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-24T00:00:00Z",
+          "actor": "mei-mori",
+          "assignee": "mei-mori"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-03T01:50:00Z",
+          "actor": "mei-mori",
+          "body": "直しました。"
+        },
+        {
+          "event": "closed",
+          "at": "2026-10-03T02:00:00Z",
+          "actor": "mei-mori"
+        }
+      ]
+    },
+    {
+      "number": 214,
+      "kind": "issue",
+      "title": "古い API キーを削除する",
+      "user": "ren-suzuki",
+      "assignees": [
+        "ren-suzuki"
+      ],
+      "labels": [],
+      "milestone": 13,
+      "state": "closed",
+      "created_at": "2026-09-21T00:00:00Z",
+      "closed_at": "2026-09-29T00:00:00Z",
+      "blocked_by": 0,
+      "body": "使われていない API キーを削除します。",
+      "events": [
+        {
+          "event": "milestoned",
+          "at": "2026-09-21T00:00:00Z",
+          "actor": "ren-suzuki",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-21T00:00:00Z",
+          "actor": "ren-suzuki",
+          "assignee": "ren-suzuki"
+        },
+        {
+          "event": "closed",
+          "at": "2026-09-29T00:00:00Z",
+          "actor": "ren-suzuki"
+        }
+      ]
+    },
+    {
+      "number": 215,
+      "kind": "issue",
+      "title": "検索結果のハイライト",
+      "user": "kai-ito",
+      "assignees": [
+        "kai-ito"
+      ],
+      "labels": [
+        "feature",
+        "status: in progress",
+        "status: waiting"
+      ],
+      "milestone": 13,
+      "state": "open",
+      "created_at": "2026-09-25T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "検索語を結果の中で強調表示したい。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-09-25T00:00:00Z",
+          "actor": "kai-ito",
+          "label": "feature"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-09-25T00:00:00Z",
+          "actor": "kai-ito",
+          "milestone": "Sprint 13"
+        },
+        {
+          "event": "assigned",
+          "at": "2026-09-25T00:00:00Z",
+          "actor": "kai-ito",
+          "assignee": "kai-ito"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-09-26T00:00:00Z",
+          "actor": "kai-ito",
+          "label": "status: in progress"
+        },
+        {
+          "event": "labeled",
+          "at": "2026-10-03T00:00:00Z",
+          "actor": "kai-ito",
+          "label": "status: waiting"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-03T00:00:00Z",
+          "actor": "kai-ito",
+          "body": "仕様の確認を待っています。"
+        }
+      ]
+    },
+    {
+      "number": 221,
+      "kind": "pr",
+      "title": "fix: 並び順をサーバーに保存する",
+      "user": "aoi-tanaka",
+      "assignees": [
+        "aoi-tanaka"
+      ],
+      "labels": [],
+      "milestone": null,
+      "state": "open",
+      "created_at": "2026-10-01T05:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "draft": false,
+      "head_ref": "201-save-card-order",
+      "body": "Closes #201",
+      "events": [
+        {
+          "event": "committed",
+          "at": "2026-10-01T04:50:00Z",
+          "actor": "aoi-tanaka",
+          "sha": "940db536cf70670aa0932dd5806566aa246f2c90",
+          "message": "Persist the card order on drop"
+        },
+        {
+          "event": "review_requested",
+          "at": "2026-10-01T05:01:00Z",
+          "actor": "aoi-tanaka",
+          "reviewer": "kai-ito"
+        }
+      ]
+    },
+    {
+      "number": 223,
+      "kind": "pr",
+      "title": "docs: 通知設定の文言案",
+      "user": "mei-mori",
+      "assignees": [
+        "mei-mori"
+      ],
+      "labels": [],
+      "milestone": null,
+      "state": "open",
+      "created_at": "2026-10-02T06:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "draft": true,
+      "head_ref": "203-wording",
+      "body": "Refs #203",
+      "events": [
+        {
+          "event": "committed",
+          "at": "2026-10-02T05:55:00Z",
+          "actor": "mei-mori",
+          "sha": "3f14a88f0e0aa5ca3ff9764d9a9f4577e5c15005",
+          "message": "Draft the new wording"
+        }
+      ]
+    },
+    {
+      "number": 230,
+      "kind": "issue",
+      "title": "設定画面の全体見直し",
+      "user": "aoi-tanaka",
+      "assignees": [
+        "aoi-tanaka"
+      ],
+      "labels": [
+        "feature"
+      ],
+      "milestone": 14,
+      "state": "open",
+      "created_at": "2026-10-01T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "#208 も含めて、設定画面の構成を見直します。",
+      "events": [
+        {
+          "event": "labeled",
+          "at": "2026-10-01T00:00:00Z",
+          "actor": "aoi-tanaka",
+          "label": "feature"
+        },
+        {
+          "event": "milestoned",
+          "at": "2026-10-01T00:00:00Z",
+          "actor": "aoi-tanaka",
+          "milestone": "Sprint 14"
+        }
+      ]
+    },
+    {
+      "number": 300,
+      "kind": "issue",
+      "title": "朝会ダイジェストへのコメント",
+      "user": "aoi-tanaka",
+      "assignees": [],
+      "labels": [],
+      "milestone": null,
+      "state": "open",
+      "created_at": "2026-09-01T00:00:00Z",
+      "closed_at": null,
+      "blocked_by": 0,
+      "body": "ダイジェストの書き方への要望はここにコメントしてください。",
+      "events": [
+        {
+          "event": "commented",
+          "at": "2026-09-24T00:00:00Z",
+          "actor": "ren-suzuki",
+          "body": "表の列を減らしてほしい。"
+        },
+        {
+          "event": "commented",
+          "at": "2026-10-03T00:30:00Z",
+          "actor": "aoi-tanaka",
+          "body": "#206 は来週まで待つと決めたので、催促の書き方を柔らかくしてください。"
+        }
+      ]
+    }
+  ]
+}

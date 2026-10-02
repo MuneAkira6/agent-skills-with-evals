@@ -1,0 +1,4 @@
+# Supply-chain settings (pnpm 11; allowBuilds replaces onlyBuiltDependencies from earlier versions).
+minimumReleaseAge: 4320   # install only versions published at least three days ago (minutes)
+strictDepBuilds: true     # a dependency that wants to run a build script fails the install instead of being skipped
+allowBuilds: {}           # no dependency here needs one

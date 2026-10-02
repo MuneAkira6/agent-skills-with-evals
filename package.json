@@ -1,0 +1,30 @@
+{
+  "name": "agent-skills-with-evals",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Three Claude Code skills, each with an eval suite: a trigger-rate probe and frontmatter validator, a Redmine issue fetcher that verifies every attachment, and a stand-up digest from a GitHub milestone",
+  "type": "module",
+  "packageManager": "pnpm@11.28.0",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "vitest run",
+    "lint": "biome check .",
+    "typecheck": "tsc --noEmit",
+    "skills:validate": "node skills/skill-trigger-probe/scripts/validate.ts",
+    "probe": "node skills/skill-trigger-probe/scripts/probe.ts",
+    "fetch-issue": "node skills/verifiable-fetch/scripts/fetch.ts",
+    "digest": "node skills/standup-digest/scripts/digest.ts",
+    "mock:tracker": "node harness/mocks/tracker-cli.ts",
+    "mock:github": "node harness/mocks/github-cli.ts",
+    "fetch:demo": "node harness/fetch-demo.ts",
+    "digest:demo": "node harness/digest-demo.ts",
+    "eval": "node harness/ab.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/node": "^24.0.0",
+    "pnpm": "11.28.0",
+    "typescript": "^7.0.0",
+    "vitest": "^5.0.0"
+  }
+}

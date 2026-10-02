@@ -1,0 +1,22 @@
+[
+  { "id": "pos-ja-tomorrow-milestone", "should_trigger": true, "query": "明日の朝会用に、acme/tasks の今のマイルストーンの状況をまとめて" },
+  { "id": "pos-zh-where-stuck", "should_trigger": true, "query": "明早站会前帮我看看这个 sprint（GitHub 的 milestone）卡在哪里，出一份 digest" },
+  { "id": "pos-en-digest-no-post", "should_trigger": true, "query": "Make the stand-up digest for our GitHub repo's current milestone — don't post it anywhere." },
+  { "id": "pos-ja-decisions-only", "should_trigger": true, "query": "朝会で今日決めることだけ先に教えて。リポジトリは acme/tasks" },
+  { "id": "pos-en-waiting-longest", "should_trigger": true, "query": "Which issues in the current milestone have been waiting the longest and need a decision at today's standup?" },
+  { "id": "pos-zh-who-decides", "should_trigger": true, "query": "做一份晨会摘要：哪些 issue 卡住了、哪些 PR 在等 review、谁需要拍板" },
+  { "id": "pos-ja-one-screen", "should_trigger": true, "query": "デイリースクラムの前に、止まっている issue とレビュー待ちの PR を一画面にまとめて" },
+  { "id": "pos-en-scrum-runs-long", "should_trigger": true, "query": "Our daily scrum keeps running long. Generate today's digest page from GitHub so people can read it before the meeting." },
+  { "id": "pos-ja-tune-ranking", "should_trigger": true, "query": "朝会ダイジェストの並び順の規則を直したい。古い issue が毎日一番上に来てしまう" },
+  { "id": "pos-zh-token-cost", "should_trigger": true, "query": "站会 digest 每天要花多少 token？输入没变的时候能不能不调 LLM" },
+  { "id": "neg-en-release-notes", "should_trigger": false, "query": "Write release notes for v2.3 from the merged pull requests." },
+  { "id": "neg-ja-weekly-report", "should_trigger": false, "query": "今週の週報を書いて。やったことは CSV の不具合修正とレビュー 3 件です。" },
+  { "id": "neg-zh-review-pr", "should_trigger": false, "query": "帮我 review 一下 PR #45 的代码" },
+  { "id": "neg-en-create-milestone", "should_trigger": false, "query": "Create a GitHub milestone called Sprint 14 that is due on October 23." },
+  { "id": "neg-ja-retro", "should_trigger": false, "query": "スプリントのふりかえりの進め方を提案して" },
+  { "id": "neg-en-summarize-thread", "should_trigger": false, "query": "Summarize the discussion thread of issue #201 for me." },
+  { "id": "neg-zh-jira-to-excel", "should_trigger": false, "query": "帮我把 Jira 的 sprint 报表导出成 Excel" },
+  { "id": "neg-ja-actions-cron", "should_trigger": false, "query": "GitHub Actions のワークフローが平日の朝 8:30 に動くように cron を書いて" },
+  { "id": "neg-en-burndown", "should_trigger": false, "query": "Plot the burndown chart for the last three sprints." },
+  { "id": "neg-ja-minutes-template", "should_trigger": false, "query": "会議の議事録のテンプレートを作って" }
+]

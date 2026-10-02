@@ -1,0 +1,50 @@
+{
+  "skill": "verifiable-fetch",
+  "notes": "Written by the author before the skill existed, and not to be changed by the run. Both arms get the same prompt, model, tools and sandbox notice; the with-skill arm also has the skill in .claude/skills/. Several assertions encode rules the skill teaches (exact sizes, no HTML saved under an image's name, a path limit, Windows-safe names); a baseline cannot know them, so a difference shows that the skill's rules were applied, not that the skill is better in general. Mechanical assertions are graded by evals/verifiable-fetch/grade.ts; judgment assertions by a reader who quotes the evidence.",
+  "evals": [
+    {
+      "id": "screenshots-ja",
+      "prompt": "http://127.0.0.1:18451 の Redmine（ログイン不要）から #101 を取得して、Markdown と添付ファイルを out/ に保存して。",
+      "mocks": ["tracker"],
+      "workspace": { "dirs": ["out"] },
+      "expected_output": "out/ holds a Markdown file with the subject, the description and both journal notes, and the two screenshots with their exact bytes; the Markdown says in words what each screenshot shows; no signed URL anywhere; the reply is in Japanese.",
+      "assertions": [
+        { "id": "M1", "kind": "mechanical", "text": "A Markdown file under out/ contains the subject 「ボード画面でカードの並び順が保存されない」, the description line 「ページを再読み込みする」 and both journal notes (「再現しました。」 and 「画像を 2 枚添付しました。」)." },
+        { "id": "M2", "kind": "mechanical", "text": "Files whose sha256 equals that of fixtures/tracker/files/board-before.png and of fixtures/tracker/files/board-after.png both exist under out/." },
+        { "id": "M3", "kind": "mechanical", "text": "No file under out/, and not the final reply, contains any token value the mock media host issued during the run." },
+        { "id": "M4", "kind": "mechanical", "text": "The mock log shows attachment 301 fetched from the tracker and attachment 302 fetched through the media host, and only GET requests." },
+        { "id": "J1", "kind": "judgment", "text": "The Markdown says in words what each screenshot shows — three coloured cards and their order (blue, yellow, red before; red, blue, yellow after) — not only a link or a file name." },
+        { "id": "J2", "kind": "judgment", "text": "The final reply is in Japanese and says where the files are." }
+      ]
+    },
+    {
+      "id": "blocked-and-large-en",
+      "prompt": "Fetch issue #102 from the Redmine at http://127.0.0.1:18451 (no login needed) into out/, with its attachments.",
+      "mocks": ["tracker"],
+      "workspace": { "dirs": ["out"] },
+      "expected_output": "The dialog screenshot and the 3 MiB log archive are saved with their exact bytes; the two attachments the server never delivers (a gateway's 403 page, a login page) are reported as not fetched, with a reason, and are not left on disk under their names; the archive is not inlined; no signed URL anywhere.",
+      "assertions": [
+        { "id": "M1", "kind": "mechanical", "text": "Files whose sha256 equals that of fixtures/tracker/files/export-dialog.png and that of the generated export-log.zip (02e34249abc54aba2c06c3b8b35b7f4fc78ba9b10df5371e7d8372f50adbf44c) both exist under out/." },
+        { "id": "M2", "kind": "mechanical", "text": "No file under out/ other than a .md file begins (after optional whitespace) with an HTML document (<!doctype html or <html, case-insensitive)." },
+        { "id": "M3", "kind": "mechanical", "text": "No file named gateway-screenshot.png or settings.png exists anywhere under out/." },
+        { "id": "M4", "kind": "mechanical", "text": "Every Markdown file under out/ is smaller than 100 KB (the archive is not inlined)." },
+        { "id": "M5", "kind": "mechanical", "text": "No file under out/, and not the final reply, contains any token value the mock media host issued during the run." },
+        { "id": "J1", "kind": "judgment", "text": "The Markdown and the final reply both say that gateway-screenshot.png and settings.png could not be fetched, and give a reason for each (for example the 403 response, or a login page returned instead of the image)." }
+      ]
+    },
+    {
+      "id": "deep-path-zh",
+      "prompt": "把 http://127.0.0.1:18451 上 Redmine 的 #103（不需要登录）连同附件一起存到 out/archive/2026/10/customer-escalations/notification-wording-review/ 下面。",
+      "mocks": ["tracker"],
+      "workspace": { "dirs": ["out"] },
+      "expected_output": "Both attachments are saved with their exact bytes under names that are short enough and legal on Windows; the Markdown keeps both original names; the reply is in Chinese and says a name was changed and why.",
+      "assertions": [
+        { "id": "M1", "kind": "mechanical", "text": "Files whose sha256 equals that of fixtures/tracker/files/wording.png and of fixtures/tracker/files/notice.png both exist under out/." },
+        { "id": "M2", "kind": "mechanical", "text": "Every file the arm wrote under out/ had an absolute path of at most 240 characters in the arm's workspace." },
+        { "id": "M3", "kind": "mechanical", "text": "No file or directory name under out/ contains a character Windows forbids in names (< > : \" | ? * or a control character)." },
+        { "id": "M4", "kind": "mechanical", "text": "A Markdown file under out/ contains both original attachment names in full: the 150-character name and 通知:設定?.png." },
+        { "id": "J1", "kind": "judgment", "text": "The final reply is in Chinese, says where the files are, and says that a file name was changed and why." }
+      ]
+    }
+  ]
+}
