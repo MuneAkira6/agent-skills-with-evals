@@ -68,8 +68,9 @@ Three rules of this machine, not measurements:
 
 - The proxy comes from environment variables: **never unset or print them.**
 - **Never open, print or copy the file `CLAUDE_CALL_ENV_FILE` names**, and never read the home
-  directory's token or proxy files. The launcher sources the file in a child shell; that is the only
-  way it is used.
+  directory's token or proxy files. The file is only ever sourced in a child shell right before a
+  `claude` starts — by the launcher, and by the two calls of G0's row E5 — and nothing of that shell's
+  environment is printed.
 - Every `claude` you start runs **outside this repository** (SCOPE.md, "Every `claude` this repository
   starts"): this repository holds the run's Stop hooks, and a session started inside it would meet them.
 
@@ -169,7 +170,7 @@ one arm of one eval per command for this reason.
 3. **Read and write only inside this repository and the OS temp directory**, and run `rg` from your
    `PATH`. Do not open, list or search anything else on this machine — not the home directory, not
    other repositories, not the CLI's configuration directories, not the file `CLAUDE_CALL_ENV_FILE`
-   names (you check that it exists, nothing more).
+   names (you check that it exists; it is sourced only as the rule above says).
 4. **The CLI only as SCOPE.md describes**: `claude` is started only by this repository's tools (the
    probe, the A/B runner, the digest's narration) and by the two calls of G0's E5; always outside this
    repository; never in the background; only the measurements SCOPE.md and PROGRESS.md list, with their
