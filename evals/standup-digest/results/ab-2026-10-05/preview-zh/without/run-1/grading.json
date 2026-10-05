@@ -1,0 +1,50 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ has a heading containing 今日決めること; files: none"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no 今日決めること section in any Markdown under out/"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ to check"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no 今日決めること section in any Markdown under out/"
+  },
+  {
+    "id": "M5",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ to check"
+  },
+  {
+    "id": "M6",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "4 distinct request(s), of which not a GET: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "There are no decisions in the reply to give. The arm wrote no file at all and answered with a question instead: \"我需要确认一下\\\"站会 digest\\\"的格式——之前对话里我没有存过这个格式的记忆，workspace 里也没有样例文件。\" It is Chinese and under 25 lines, but it contains no decision."
+  },
+  {
+    "id": "J2",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "No page exists: outputs.json is empty for this run, so there is no text to be Japanese. The assertion cannot be satisfied."
+  }
+]

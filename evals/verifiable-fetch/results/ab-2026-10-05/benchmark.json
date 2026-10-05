@@ -1,0 +1,266 @@
+{
+  "skill": "verifiable-fetch",
+  "date": "2026-10-05",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "generatedFrom": "evals/verifiable-fetch/results/ab-2026-10-05",
+  "arms": [
+    {
+      "eval": "blocked-and-large-en",
+      "arm": "with",
+      "runs": 1,
+      "statuses": [
+        "completed"
+      ],
+      "brokenReasons": [],
+      "stopReasons": [
+        "completed"
+      ],
+      "mechanical": {
+        "passed": 5,
+        "total": 5
+      },
+      "judgment": {
+        "passed": 1,
+        "total": 1,
+        "pending": false
+      },
+      "medianDurationMs": 26658,
+      "tokens": {
+        "input": 12,
+        "cacheCreation": 12046,
+        "cacheRead": 199400,
+        "output": 1070
+      },
+      "totalCostUsd": 0.14883600000000002,
+      "redactions": 0,
+      "contamination": [],
+      "model": {
+        "requested": "sonnet",
+        "resolved": "claude-sonnet-5"
+      },
+      "claudeCodeVersion": "2.1.233",
+      "runsAgree": null,
+      "agreementTrivial": null,
+      "agreementKeys": [
+        "02e34249abc54aba2c06c3b8b35b7f4fc78ba9b10df5371e7d8372f50adbf44c|4d4b1b73790b4d26a4fe423b5373c6d3842383c4e9047402b57f2b3274ff4c10"
+      ]
+    },
+    {
+      "eval": "blocked-and-large-en",
+      "arm": "without",
+      "runs": 1,
+      "statuses": [
+        "completed"
+      ],
+      "brokenReasons": [],
+      "stopReasons": [
+        "completed"
+      ],
+      "mechanical": {
+        "passed": 5,
+        "total": 5
+      },
+      "judgment": {
+        "passed": 0,
+        "total": 1,
+        "pending": false
+      },
+      "medianDurationMs": 129128,
+      "tokens": {
+        "input": 22,
+        "cacheCreation": 16496,
+        "cacheRead": 389952,
+        "output": 4178
+      },
+      "totalCostUsd": 0.2793516,
+      "redactions": 16,
+      "contamination": [
+        "Bash names a path outside the sandbox: /tmp/test303.png",
+        "Bash names a path outside the sandbox: /dev/null",
+        "Bash names a path outside the sandbox: /tmp/305test.png"
+      ],
+      "model": {
+        "requested": "sonnet",
+        "resolved": "claude-sonnet-5"
+      },
+      "claudeCodeVersion": "2.1.233",
+      "runsAgree": null,
+      "agreementTrivial": null,
+      "agreementKeys": [
+        "02e34249abc54aba2c06c3b8b35b7f4fc78ba9b10df5371e7d8372f50adbf44c|4d4b1b73790b4d26a4fe423b5373c6d3842383c4e9047402b57f2b3274ff4c10|fefb2a60536ca0957498a5b09ff1c67a8baa46cd8034ac16e55a1b7f89c3e696"
+      ]
+    },
+    {
+      "eval": "deep-path-zh",
+      "arm": "with",
+      "runs": 1,
+      "statuses": [
+        "completed"
+      ],
+      "brokenReasons": [],
+      "stopReasons": [
+        "completed"
+      ],
+      "mechanical": {
+        "passed": 4,
+        "total": 4
+      },
+      "judgment": {
+        "passed": 1,
+        "total": 1,
+        "pending": false
+      },
+      "medianDurationMs": 26199,
+      "tokens": {
+        "input": 14,
+        "cacheCreation": 13081,
+        "cacheRead": 237375,
+        "output": 1871
+      },
+      "totalCostUsd": 0.17850749999999999,
+      "redactions": 0,
+      "contamination": [],
+      "model": {
+        "requested": "sonnet",
+        "resolved": "claude-sonnet-5"
+      },
+      "claudeCodeVersion": "2.1.233",
+      "runsAgree": null,
+      "agreementTrivial": null,
+      "agreementKeys": [
+        "9c3acf9da6d30444d64fef71d04c6c5222808c55f1edc254e48cd35e19b8ef9b|a398ab8aca6a272e160dead7cf8e4904b1acd4ccbf60e192d0b18fa841780871"
+      ]
+    },
+    {
+      "eval": "deep-path-zh",
+      "arm": "without",
+      "runs": 1,
+      "statuses": [
+        "completed"
+      ],
+      "brokenReasons": [],
+      "stopReasons": [
+        "completed"
+      ],
+      "mechanical": {
+        "passed": 1,
+        "total": 4
+      },
+      "judgment": {
+        "passed": 0,
+        "total": 1,
+        "pending": false
+      },
+      "medianDurationMs": 32013,
+      "tokens": {
+        "input": 14,
+        "cacheCreation": 12319,
+        "cacheRead": 234047,
+        "output": 1813
+      },
+      "totalCostUsd": 0.17204209999999998,
+      "redactions": 0,
+      "contamination": [
+        "Bash names a path outside the sandbox: /dev/null"
+      ],
+      "model": {
+        "requested": "sonnet",
+        "resolved": "claude-sonnet-5"
+      },
+      "claudeCodeVersion": "2.1.233",
+      "runsAgree": null,
+      "agreementTrivial": null,
+      "agreementKeys": [
+        "9c3acf9da6d30444d64fef71d04c6c5222808c55f1edc254e48cd35e19b8ef9b|a398ab8aca6a272e160dead7cf8e4904b1acd4ccbf60e192d0b18fa841780871|a731f971aa947ad8176245493efd34e12e3af972c9dfec6fa6fa24cee57b826f"
+      ]
+    },
+    {
+      "eval": "screenshots-ja",
+      "arm": "with",
+      "runs": 1,
+      "statuses": [
+        "completed"
+      ],
+      "brokenReasons": [],
+      "stopReasons": [
+        "completed"
+      ],
+      "mechanical": {
+        "passed": 4,
+        "total": 4
+      },
+      "judgment": {
+        "passed": 2,
+        "total": 2,
+        "pending": false
+      },
+      "medianDurationMs": 17294,
+      "tokens": {
+        "input": 12,
+        "cacheCreation": 12346,
+        "cacheRead": 199677,
+        "output": 1060
+      },
+      "totalCostUsd": 0.1506121,
+      "redactions": 0,
+      "contamination": [],
+      "model": {
+        "requested": "sonnet",
+        "resolved": "claude-sonnet-5"
+      },
+      "claudeCodeVersion": "2.1.233",
+      "runsAgree": null,
+      "agreementTrivial": null,
+      "agreementKeys": [
+        "39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627|99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f"
+      ]
+    },
+    {
+      "eval": "screenshots-ja",
+      "arm": "without",
+      "runs": 1,
+      "statuses": [
+        "completed"
+      ],
+      "brokenReasons": [],
+      "stopReasons": [
+        "completed"
+      ],
+      "mechanical": {
+        "passed": 4,
+        "total": 4
+      },
+      "judgment": {
+        "passed": 1,
+        "total": 2,
+        "pending": false
+      },
+      "medianDurationMs": 33359,
+      "tokens": {
+        "input": 16,
+        "cacheCreation": 12620,
+        "cacheRead": 268461,
+        "output": 2016
+      },
+      "totalCostUsd": 0.18722830000000001,
+      "redactions": 4,
+      "contamination": [
+        "Bash names a path outside the sandbox: /tmp/issue101.json"
+      ],
+      "model": {
+        "requested": "sonnet",
+        "resolved": "claude-sonnet-5"
+      },
+      "claudeCodeVersion": "2.1.233",
+      "runsAgree": null,
+      "agreementTrivial": null,
+      "agreementKeys": [
+        "39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627|99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f"
+      ]
+    }
+  ]
+}

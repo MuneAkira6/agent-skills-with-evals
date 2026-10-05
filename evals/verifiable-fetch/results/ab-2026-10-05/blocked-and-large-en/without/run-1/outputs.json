@@ -1,0 +1,23 @@
+[
+  {
+    "path": "out/attachments/export-dialog.png",
+    "size": 617,
+    "sha256": "4d4b1b73790b4d26a4fe423b5373c6d3842383c4e9047402b57f2b3274ff4c10",
+    "head64": "iVBORw0KGgoAAAANSUhEUgAAAWgAAADICAIAAABK7OzYAAACMElEQVR42u3UQQ0AIAwEwXriiRbkoQJxVEOT/g==",
+    "copied": true
+  },
+  {
+    "path": "out/attachments/export-log.zip",
+    "size": 3145728,
+    "sha256": "02e34249abc54aba2c06c3b8b35b7f4fc78ba9b10df5371e7d8372f50adbf44c",
+    "head64": "UEsDBDqrrCavIxpxbJFdMRg+vNLvUSKdck/b2W85bq4ryCIvDOPtjGh7oomZ1jmnn/JV/pEVuCCqepSKoE3AnQ==",
+    "copied": false
+  },
+  {
+    "path": "out/issue-102.json",
+    "size": 1874,
+    "sha256": "fefb2a60536ca0957498a5b09ff1c67a8baa46cd8034ac16e55a1b7f89c3e696",
+    "head64": "eyJpc3N1ZSI6eyJpZCI6MTAyLCJwcm9qZWN0Ijp7ImlkIjoxLCJuYW1lIjoiQWNtZSBUYXNrcyJ9LCJ0cmFjaw==",
+    "copied": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "wording.png: out/archive/2026/10/customer-escalations/notification-wording-review/attachments/103/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-oct-d06f72f0.png (316 bytes, sha256 a398ab8aca6a272e160dead7cf8e4904b1acd4ccbf60e192d0b18fa841780871); notice.png: out/archive/2026/10/customer-escalations/notification-wording-review/attachments/103/通知_設定_.png (739 bytes, sha256 9c3acf9da6d30444d64fef71d04c6c5222808c55f1edc254e48cd35e19b8ef9b)"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "longest absolute path 240 characters (out/archive/2026/10/customer-escalations/notification-wording-review/attachments/103/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-oct-d06f72f0.png), limit 240; over the limit: none"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "paths checked: 3; with a character Windows forbids: none"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/archive/2026/10/customer-escalations/notification-wording-review/103.md contains the 150-character original name and 通知:設定?.png"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "Chinese, says where, and says a name was changed and why: \"已将 Redmine #103（通知設定の文言を見直す）连同 2 个附件保存到：\" over \"`out/archive/2026/10/customer-escalations/notification-wording-review/`\", and \"`通知_設定_.png`（原文件名含特殊字符 `通知:設定?.png`，已安全化重命名）\". It also says the long name was shortened by listing it as \"`notification-settings-wording-review-...png`\"."
+  }
+]

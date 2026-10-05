@@ -1,0 +1,65 @@
+{
+  "skill": "standup-digest",
+  "eval": "preview-zh",
+  "arm": "without",
+  "run": 2,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-iuF4T2/ws",
+  "durationMs": 33427,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 3,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 6,
+    "cacheCreation": 9510,
+    "cacheRead": 91045,
+    "output": 1220,
+    "thinking": 652
+  },
+  "totalCostUsd": 0.10347949999999999,
+  "budgetUsd": 3,
+  "redactions": 0,
+  "mocks": [
+    {
+      "name": "github",
+      "requests": {},
+      "issuedTokens": []
+    }
+  ],
+  "contamination": [
+    "Bash names a path outside the sandbox: /dev/null"
+  ],
+  "rawTranscript": "evals/.runs/standup-digest/preview-zh/without/run-2/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": false
+}

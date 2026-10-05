@@ -1,0 +1,548 @@
+{
+  "skill": {
+    "name": "skill-trigger-probe",
+    "dir": "skills/skill-trigger-probe",
+    "descriptionCharacters": 943
+  },
+  "siblings": [
+    "verifiable-fetch",
+    "standup-digest"
+  ],
+  "queriesFile": "evals/.runs/requeried-2026-10-05-skill-trigger-probe.json",
+  "runsPerQuery": 6,
+  "model": {
+    "requested": "opus",
+    "resolved": "claude-opus-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "isolatedConfig": true,
+  "dateUtc": "2026-10-05",
+  "summary": {
+    "positives": {
+      "passed": 3,
+      "total": 6
+    },
+    "negatives": {
+      "passed": 0,
+      "total": 0
+    },
+    "brokenRuns": {},
+    "brokenTotal": 0,
+    "nearThreshold": [],
+    "siblingsFired": {},
+    "totalCostUsd": 2.985620000000001,
+    "incomplete": false
+  },
+  "perQuery": [
+    {
+      "id": "pos-en-twenty-queries",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 5,
+      "rate": 0.8333333333333334,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-zero-on-windows",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 2,
+      "rate": 0.3333333333333333,
+      "passed": false,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-ja-description-limit",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 4,
+      "rate": 0.6666666666666666,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-validate-frontmatter",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 1,
+      "rate": 0.16666666666666666,
+      "passed": false,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-zh-which-skill-fired",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 2,
+      "rate": 0.3333333333333333,
+      "passed": false,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-before-shipping",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 3,
+      "rate": 0.5,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    }
+  ],
+  "perRun": [
+    {
+      "queryId": "pos-en-before-shipping",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5351,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0797315
+    },
+    {
+      "queryId": "pos-en-before-shipping",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5151,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0796415
+    },
+    {
+      "queryId": "pos-en-before-shipping",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5014,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0801665
+    },
+    {
+      "queryId": "pos-en-before-shipping",
+      "run": 4,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5720,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0827915
+    },
+    {
+      "queryId": "pos-en-before-shipping",
+      "run": 5,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6507,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0830665
+    },
+    {
+      "queryId": "pos-en-before-shipping",
+      "run": 6,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5071,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0799415
+    },
+    {
+      "queryId": "pos-en-twenty-queries",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 8687,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08731349999999999
+    },
+    {
+      "queryId": "pos-en-twenty-queries",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 8852,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0796885
+    },
+    {
+      "queryId": "pos-en-twenty-queries",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 11188,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0795135
+    },
+    {
+      "queryId": "pos-en-twenty-queries",
+      "run": 4,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 4709,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0795135
+    },
+    {
+      "queryId": "pos-en-twenty-queries",
+      "run": 5,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 7685,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0867135
+    },
+    {
+      "queryId": "pos-en-twenty-queries",
+      "run": 6,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5323,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0795385
+    },
+    {
+      "queryId": "pos-en-validate-frontmatter",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 7030,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08168650000000001
+    },
+    {
+      "queryId": "pos-en-validate-frontmatter",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5622,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08153650000000001
+    },
+    {
+      "queryId": "pos-en-validate-frontmatter",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 11673,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08141150000000001
+    },
+    {
+      "queryId": "pos-en-validate-frontmatter",
+      "run": 4,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6202,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08141150000000001
+    },
+    {
+      "queryId": "pos-en-validate-frontmatter",
+      "run": 5,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 7149,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08246150000000001
+    },
+    {
+      "queryId": "pos-en-validate-frontmatter",
+      "run": 6,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5564,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08168650000000001
+    },
+    {
+      "queryId": "pos-en-zero-on-windows",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 8776,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0833275
+    },
+    {
+      "queryId": "pos-en-zero-on-windows",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6453,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08377749999999999
+    },
+    {
+      "queryId": "pos-en-zero-on-windows",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5905,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08377749999999999
+    },
+    {
+      "queryId": "pos-en-zero-on-windows",
+      "run": 4,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 7183,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0847525
+    },
+    {
+      "queryId": "pos-en-zero-on-windows",
+      "run": 5,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 7584,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0853525
+    },
+    {
+      "queryId": "pos-en-zero-on-windows",
+      "run": 6,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6404,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08351249999999999
+    },
+    {
+      "queryId": "pos-ja-description-limit",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5709,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08050550000000001
+    },
+    {
+      "queryId": "pos-ja-description-limit",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5348,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0804455
+    },
+    {
+      "queryId": "pos-ja-description-limit",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 5459,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0804455
+    },
+    {
+      "queryId": "pos-ja-description-limit",
+      "run": 4,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 6533,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08382550000000001
+    },
+    {
+      "queryId": "pos-ja-description-limit",
+      "run": 5,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5883,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0809305
+    },
+    {
+      "queryId": "pos-ja-description-limit",
+      "run": 6,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5808,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08146550000000001
+    },
+    {
+      "queryId": "pos-zh-which-skill-fired",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 8774,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08961549999999999
+    },
+    {
+      "queryId": "pos-zh-which-skill-fired",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 7792,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08516549999999999
+    },
+    {
+      "queryId": "pos-zh-which-skill-fired",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 9237,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0877805
+    },
+    {
+      "queryId": "pos-zh-which-skill-fired",
+      "run": 4,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 9111,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08935549999999999
+    },
+    {
+      "queryId": "pos-zh-which-skill-fired",
+      "run": 5,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "skill-trigger-probe"
+      ],
+      "durationMs": 9317,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08871050000000001
+    },
+    {
+      "queryId": "pos-zh-which-skill-fired",
+      "run": 6,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 8715,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0850605
+    }
+  ]
+}

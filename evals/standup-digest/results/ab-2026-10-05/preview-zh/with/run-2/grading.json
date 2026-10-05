@@ -1,0 +1,50 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: the 今日決めること heading is on line 3, the first table on line 26"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: the 今日決めること section names 206, 205, 202, 211, 201, 190, 204 (expected 206, 205, 202, 211, 201, 190, 204)"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: each of the 15 open items appears exactly once outside the ✅ and ⚠️ lines, and neither #192 nor #230 appears"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: silent items inside the 今日決めること section: none"
+  },
+  {
+    "id": "M5",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: holds \"Sprint 13\" and the due date as 10/9"
+  },
+  {
+    "id": "M6",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "25 distinct request(s), of which not a GET: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "The reply is Chinese and fits one screen — 13 lines — with the seven decisions numbered in rule order: \"**今日要决定的事项（7 项，按优先级排序）：**\", \"1. #206 — API 超时设置，已等待 20 天…\", \"2. #205 — 任务列表加载慢，已等待 71 天（最久）\", … \"5. #201 — 看板排序不保存，PR #221 等审 3 天\"."
+  },
+  {
+    "id": "J2",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "The page is the same Japanese one as run 1 (both runs have the identical decision list and the page is written by the skill, not the model): \"## 今日決めること（7）\", \"| # | 担当 | 状態 | 直近の動き |\", \"- ⏸️ 14 日以上動きなし（2）：#191（前マイルストーン残）、#208\"."
+  }
+]

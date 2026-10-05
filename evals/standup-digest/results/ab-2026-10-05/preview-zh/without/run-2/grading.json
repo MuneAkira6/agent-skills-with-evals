@@ -1,0 +1,50 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ has a heading containing 今日決めること; files: none"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no 今日決めること section in any Markdown under out/"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ to check"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no 今日決めること section in any Markdown under out/"
+  },
+  {
+    "id": "M5",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ to check"
+  },
+  {
+    "id": "M6",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "run.json lists no mock request at all, so this cannot be decided"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "As run 1: no decisions, because the arm produced nothing. Its reply asks for the format — \"这个工作目录和记忆里都没有找到\\\"站会 digest\\\"的格式模板或样例\" — and then asks two further questions about which milestone and whether the mirror is a standard GitHub REST path."
+  },
+  {
+    "id": "J2",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "No page exists: outputs.json is empty for this run."
+  }
+]

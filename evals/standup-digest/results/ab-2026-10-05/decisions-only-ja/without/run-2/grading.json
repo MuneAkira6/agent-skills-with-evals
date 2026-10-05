@@ -1,0 +1,32 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "the final reply names none first (expected 206, 205, 202, 211, 201, 190, 204)"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "out/digest-2026-10-05.md does not mention #190, #201, #203, #204, #205, #209, #212"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "the arm took 91 s (limit 300 s)"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "19 distinct request(s), of which not a GET: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "Japanese, but the reply gives no decisions at all — it only points at the file: \"上記の「今日決めること」6項目がそのまま先頭セクションに入っています。残り時間が少ないので、まずはそこだけ共有して朝会に臨んでください。\" There is no list in the reply, and the file it points at names six items, not the seven the rules choose."
+  }
+]

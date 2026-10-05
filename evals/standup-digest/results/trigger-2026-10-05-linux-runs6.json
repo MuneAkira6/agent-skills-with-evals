@@ -1,0 +1,130 @@
+{
+  "skill": {
+    "name": "standup-digest",
+    "dir": "skills/standup-digest",
+    "descriptionCharacters": 975
+  },
+  "siblings": [
+    "skill-trigger-probe",
+    "verifiable-fetch"
+  ],
+  "queriesFile": "evals/.runs/requeried-2026-10-05-standup-digest.json",
+  "runsPerQuery": 6,
+  "model": {
+    "requested": "opus",
+    "resolved": "claude-opus-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "isolatedConfig": true,
+  "dateUtc": "2026-10-05",
+  "summary": {
+    "positives": {
+      "passed": 1,
+      "total": 1
+    },
+    "negatives": {
+      "passed": 0,
+      "total": 0
+    },
+    "brokenRuns": {},
+    "brokenTotal": 0,
+    "nearThreshold": [],
+    "siblingsFired": {
+      "claude-api": 1
+    },
+    "totalCostUsd": 0.557849,
+    "incomplete": false
+  },
+  "perQuery": [
+    {
+      "id": "pos-zh-token-cost",
+      "shouldTrigger": true,
+      "runs": 6,
+      "valid": 6,
+      "triggered": 3,
+      "rate": 0.5,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {
+        "claude-api": 1
+      }
+    }
+  ],
+  "perRun": [
+    {
+      "queryId": "pos-zh-token-cost",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 10859,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0902815
+    },
+    {
+      "queryId": "pos-zh-token-cost",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "standup-digest"
+      ],
+      "durationMs": 13458,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0952165
+    },
+    {
+      "queryId": "pos-zh-token-cost",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 12206,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0966565
+    },
+    {
+      "queryId": "pos-zh-token-cost",
+      "run": 4,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "standup-digest",
+        "claude-api"
+      ],
+      "durationMs": 9670,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08935150000000001
+    },
+    {
+      "queryId": "pos-zh-token-cost",
+      "run": 5,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "standup-digest"
+      ],
+      "durationMs": 9895,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0901815
+    },
+    {
+      "queryId": "pos-zh-token-cost",
+      "run": 6,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 12746,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.09616150000000001
+    }
+  ]
+}

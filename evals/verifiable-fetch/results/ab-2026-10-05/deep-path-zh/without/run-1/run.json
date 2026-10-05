@@ -1,0 +1,69 @@
+{
+  "skill": "verifiable-fetch",
+  "eval": "deep-path-zh",
+  "arm": "without",
+  "run": 1,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-EajpWV/ws",
+  "durationMs": 32013,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 7,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 14,
+    "cacheCreation": 12319,
+    "cacheRead": 234047,
+    "output": 1813,
+    "thinking": 815
+  },
+  "totalCostUsd": 0.17204209999999998,
+  "budgetUsd": 3,
+  "redactions": 0,
+  "mocks": [
+    {
+      "name": "tracker",
+      "requests": {
+        "GET /issues/103.json": 2,
+        "GET /attachments/download/307/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png": 1,
+        "GET /attachments/download/308/%E9%80%9A%E7%9F%A5%3A%E8%A8%AD%E5%AE%9A%3F.png": 1
+      },
+      "issuedTokens": []
+    }
+  ],
+  "contamination": [
+    "Bash names a path outside the sandbox: /dev/null"
+  ],
+  "rawTranscript": "evals/.runs/verifiable-fetch/deep-path-zh/without/run-1/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": false
+}

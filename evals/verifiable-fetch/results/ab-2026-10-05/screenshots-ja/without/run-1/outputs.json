@@ -1,0 +1,23 @@
+[
+  {
+    "path": "out/board-after.png",
+    "size": 812,
+    "sha256": "99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f",
+    "head64": "iVBORw0KGgoAAAANSUhEUgAAAUAAAADwCAIAAAD+Tyo8AAAC80lEQVR42u3TQQ0AIQxFQXwhgANiViUekMAJDQ==",
+    "copied": true
+  },
+  {
+    "path": "out/board-before.png",
+    "size": 812,
+    "sha256": "39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627",
+    "head64": "iVBORw0KGgoAAAANSUhEUgAAAUAAAADwCAIAAAD+Tyo8AAAC80lEQVR42u3TQQ0AIQxFQXwhgANiViUekMAJDQ==",
+    "copied": true
+  },
+  {
+    "path": "out/issue-101.md",
+    "size": 1254,
+    "sha256": "933faf0a23da30439dff1c459227cf765cbb57eda20b3c7d25c1e2f8ad9f7827",
+    "head64": "IyAjMTAxIOODnOODvOODieeUu+mdouOBp+OCq+ODvOODieOBruS4puOBs+mghuOBjOS/neWtmOOBleOCjOOBqg==",
+    "copied": true
+  }
+]

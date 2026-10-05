@@ -1,0 +1,50 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: the 今日決めること heading is on line 3, the first table on line 26"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: the 今日決めること section names 206, 205, 202, 211, 201, 190, 204 (expected 206, 205, 202, 211, 201, 190, 204)"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: each of the 15 open items appears exactly once outside the ✅ and ⚠️ lines, and neither #192 nor #230 appears"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: silent items inside the 今日決めること section: none"
+  },
+  {
+    "id": "M5",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md: holds \"Sprint 13\" and the due date as 10/9"
+  },
+  {
+    "id": "M6",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "25 distinct request(s), of which not a GET: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "The decisions fit one screen: the reply is 7 lines, and its decision line gives all seven in rule order — \"**今日決めること(7件)**: #206/#205/#202(催促/外す判断)、#211/#201(レビュー結論待ち)、#190(前マイルストーン持ち越し)、#204(担当者未定)\"."
+  },
+  {
+    "id": "J2",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "out/digest.md is Japanese throughout: the headings \"## 今日決めること（7）\" and \"## それ以外の未完了（4）\", the labels \"| # | 担当 | 状態 | 直近の動き |\", and the lines \"- 🙊 発言不要（2）：#210、#212\" and \"- ⚠️ 不備：担当なし 1（#204）・ラベル矛盾 1（#215）\". The quoted titles are the data's own, for example \"API のタイムアウト設定を見直す\" for #206."
+  }
+]

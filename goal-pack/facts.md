@@ -83,6 +83,13 @@ Checked 4 files in 2ms. No fixes applied.
 - Decisions that depend on it: the given `package.json`, `tsconfig.json` and `biome.json`; "a skill
   directory stands alone" (SCOPE.md); red line 8.
 
+> **Superseded in part by F23 (2026-10-05)**: three of the five devDependencies are declared with a
+> caret range in the given `package.json` and resolved to newer patch versions on the day of the run
+> (`@biomejs/biome 2.5.15`, `@types/node 24.19.1`, `vitest 5.0.3`), and the install took 7.9 s because
+> those versions were not yet in the store. Everything else in this entry — Node, the selected pnpm,
+> "no build script", the direct `.ts` run and `erasableSyntaxOnly` — was re-measured unchanged. The
+> entry's text above is left as it was.
+
 ### F3: bash 5.0.17, git 2.25.1, jq 1.6, gawk 5.0.1, Python 3.8.10; ripgrep 15.2.0 is on the run's PATH
 
 - Measured on: 2026-10-02 / last re-measured: 2026-10-02
@@ -861,3 +868,248 @@ $ tsc --noEmit
 - What follows: the given Biome configuration covers `skills/`, `harness/`, `evals/` and `test/`, and
   skips the raw A/B area, the results and the fixtures.
 - Decisions that depend on it: the given `biome.json`; the run's lint rows.
+
+### F23: On 2026-10-05 the install resolves three caret-ranged devDependencies to newer patch versions than F2, in 7.9 s
+
+- Measured on: 2026-10-05 / last re-measured: 2026-10-05
+- Measured by: the run's worker, on the host, in the repository root with `pnpm-workspace.yaml`
+  unchanged and no `node_modules` present
+- Commands:
+
+```
+time pnpm install            # last lines kept
+```
+
+- Output:
+
+```
+Packages: +42
+devDependencies:
++ @biomejs/biome 2.5.15
++ @types/node 24.19.1 (26.6.4 is available)
++ pnpm 11.28.0 (12.8.1 is available)
++ typescript 7.0.2
++ vitest 5.0.3
+
+Done in 7.9s using pnpm v11.28.0
+
+real	0m8.952s
+```
+
+- What follows: `package.json` declares `@biomejs/biome ^2.2.0`, `@types/node ^24.0.0`,
+  `typescript ^7.0.0` and `vitest ^5.0.0`, so three of the five moved by one patch release in the three
+  days since F2 (`2.5.14 → 2.5.15`, `24.19.0 → 24.19.1`, `5.0.2 → 5.0.3`); `pnpm` is pinned exactly and
+  `typescript 7.0.2` came out the same. `minimumReleaseAge: 4320` still admitted them, so each had been
+  published at least three days earlier. `strictDepBuilds: true` did not fire and `allowBuilds` stays
+  empty: no dependency wants a build script. The install was slower than F2's 1.4 s only because 14 of
+  the 42 packages had to be downloaded into an empty store path for them.
+- Decisions that depend on it: none of the contract — `package.json` is given and pins no patch
+  version — but every later goal's `pnpm test`, `pnpm lint` and `pnpm typecheck` run on these versions,
+  and the G0 row E2 is an annotated PASS because of them. `pnpm-lock.yaml`, written by this install,
+  is what later goals and CI reuse.
+
+### F24: `pnpm fetch:demo` picks a free port each run, so the page's URL line is the one byte that differs between two runs
+
+- Measured on: 2026-10-05 / last re-measured: 2026-10-05
+- Measured by: the run's worker, on the host, in two temporary directories under the OS temp directory
+- Commands:
+
+```
+pnpm fetch:demo -- --issue 101 --out <tmp>/one      # then again into <tmp>/two
+( cd <tmp>/one && find . -type f | sort | xargs sha256sum )   # and the same for two
+diff <tmp>/one/101.md <tmp>/two/101.md
+sed -E 's#http://127\.0\.0\.1:[0-9]+#http://127.0.0.1:PORT#' <tmp>/one/101.md | sha256sum   # and two
+# then: one mock, two fetcher runs against the same base URL
+```
+
+- Output:
+
+```
+33218f2ce4c2e7057f05aea95161f74095eb74419dab35bac49588c392f6ec83  ./101.md
+99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f  ./attachments/101/board-after.png
+39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627  ./attachments/101/board-before.png
+---
+daa825d27fb2de9bbd6fd9822c704f8ab411d2be59f274f688d4d5164cfcad5a  ./101.md
+99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f  ./attachments/101/board-after.png
+39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627  ./attachments/101/board-before.png
+
+17c17
+< | URL | http://127.0.0.1:37183/issues/101 |
+---
+> | URL | http://127.0.0.1:41951/issues/101 |
+
+0a961f046ef283860699ac87adaebd073078cf98a9f6da95f802ee3937103717  one/101.md (normalised)
+0a961f046ef283860699ac87adaebd073078cf98a9f6da95f802ee3937103717  two/101.md (normalised)
+
+run a: exit 0
+run b: exit 0
+9e081cd3a77c2fcc89385b3748f033373c304540a257f4e553f273daa6c6f690  ./101.md
+byte-identical, every file including the Markdown
+```
+
+- What follows: the attachment files are byte-identical between two demo runs; `101.md` is not, and the
+  whole difference is line 17, the `URL` row of the Meta table, which carries the base URL the page is
+  contractually required to record (SCOPE.md, step 5: "URL `<base>/issues/<id>`"). SCOPE.md also requires
+  the demo to start its mock **on free ports**, so two demo runs do not have the same inputs: the base
+  URL is an input and it changes. With the ephemeral origin normalised the two pages hash the same, and
+  with one mock serving two fetcher runs the trees are byte-identical, Markdown included. So the
+  "two runs agree" rule holds for this skill; the demo's port is the only thing that moves, and it moves
+  because the contract says it must.
+- Decisions that depend on it: how AC-24 is measured (an annotated PASS with this entry quoted); nothing
+  in the fetcher or the page changes because of it.
+
+### F25: `facts.json` keeps the HTTP request count, so it cannot be byte-identical across two page sizes
+
+- Measured on: 2026-10-05 / last re-measured: 2026-10-05
+- Measured by: the run's worker, on the host, against the mock GitHub API on two free ports, one with
+  `maxPerPage` 100 and one with `maxPerPage` 3
+- Commands:
+
+```
+# test/digest-rules.test.ts, "follows every page through Link with maxPerPage 3 and gets the same facts"
+collect(...) with maxPerPage 100   -> collected.requests
+collect(...) with maxPerPage 3     -> collected.requests
+sha256(factsJson)  for both, raw and with '"requests": <n>' substituted
+```
+
+- Output:
+
+```
+maxPerPage 100: requests 26
+maxPerPage   3: requests 49
+facts.items      equal between the two (toEqual)
+facts.decisions  equal between the two (toEqual)
+sha256 of the two facts.json with "requests" normalised: equal
+```
+
+- What follows: SCOPE.md says "The number of requests is printed and **kept in `facts.json`**", and
+  AC-26 asks for "the facts are identical (sha256 of both `facts.json`)". Both cannot hold literally:
+  following `Link` with a smaller page costs more HTTP requests, so the field the contract requires the
+  file to carry is the one field that must differ. Everything the page and the grader read is identical —
+  the items, the lanes, the day counts, the decisions and their order — and the sha256 match once the
+  request count is normalised. The field is kept, because a reader of a committed result wants to know
+  how many calls it took; the alternative (dropping it) would break the contract clause outright.
+- Decisions that depend on it: AC-26 is an annotated PASS with this entry quoted; `facts.requests` stays
+  in the file; the page's footer hash is of the file as written, so two runs at the same page size still
+  give the same page (AC-37).
+
+### F26: the environment file only authenticates when it is sourced with the real `HOME`
+
+- Measured on: 2026-10-05 / last re-measured: 2026-10-05
+- Measured by: the run's worker, on the host, from a fresh directory under the OS temp directory,
+  after the first A/B arm of G4 came back `broken (auth)` in 3 seconds
+- Commands (the file is only ever sourced in a child shell; nothing of its content is printed):
+
+```
+# (a) the shape of G0's E5: source the file, no overrides at all
+( cd <tmp>/ws && timeout 120 bash -c '. "$CLAUDE_CALL_ENV_FILE" && exec claude -p --model sonnet \
+    --output-format json --no-session-persistence' < q.txt ); echo "rc=$?"
+# (b) the same, but with HOME and CLAUDE_CONFIG_DIR already set in the shell that sources the file
+( cd <tmp>/ws && env HOME=<tmp>/home CLAUDE_CONFIG_DIR=<tmp>/cfg timeout 120 bash -c \
+    '. "$CLAUDE_CALL_ENV_FILE" && exec claude -p …' < q.txt ); echo "rc=$?"
+```
+
+- Output:
+
+```
+--- (a) source the file, no overrides at all (G0 E5's shape)
+rc=0
+result=PONG is_error=false
+--- (b) HOME and CLAUDE_CONFIG_DIR already set in the shell that sources the file
+rc=1
+result=Not logged in · Please run /login is_error=true
+```
+
+- What follows: on this host the environment file reaches the credential through the account's real
+  home directory, so the moment of sourcing matters. SCOPE.md already says the wrapper sources the
+  file and **then** `exec env` applies the caller's overrides ("the overrides come after the file so
+  that the file cannot undo them"); this measurement shows the rule is load-bearing and not a
+  nicety. My launchers also pre-applied the overrides to the environment of the shell that does the
+  sourcing, which is shape (b): the arm came back `{"status":"broken","reason":"auth",…}` with
+  `Not logged in · Please run /login`, in 3 seconds, before a single tool call. Both launchers now
+  apply the overrides only through `env`, after the file, whenever the wrapper is used.
+  F10 is not contradicted — its `arm.sh` passed the overrides only as `env` arguments, which is
+  shape (a) plus `env`, and its arm authenticated.
+  The three trigger probes are unaffected: they override `CLAUDE_CONFIG_DIR` only and never `HOME`,
+  so the file always found the credential and those measurements stand.
+- Decisions that depend on it: the A/B runner's arms authenticate at all; the `with`/`without`
+  comparison of G4 exists because of this fix.
+
+### F27: a correct reply to decisions-only-ja necessarily quotes `PR #221`, so M1's "issue numbers" cannot include it
+
+- Measured on: 2026-10-05 / last re-measured: 2026-10-05
+- Measured by: the run's worker, on the host, from the two `with` arms of
+  `evals/standup-digest/results/ab-2026-10-05/decisions-only-ja/`
+- Commands:
+
+```
+pnpm eval -- run --skill standup-digest --eval decisions-only-ja --arm with --run 1 --model sonnet …
+sed -n '/^## Final reply/,$p' <run>/transcript.md
+jq -r '.[] | select(.passed==false) | .evidence' <run>/grading.json
+```
+
+- Output (the reply abridged to the lines that matter):
+
+```
+1. **#206**（yui-kato）API タイムアウト設定の見直し — 20日待ち → 催促するか外すか
+…
+5. **#201**（aoi-tanaka）カード並び順が保存されない — PR #221 レビュー待ち3日 → 誰がいつレビューするか
+6. **#190**（ren-suzuki）CSVインポートで列がずれる — 前マイルストーン持ち越し → 今のマイルストーンに入れるか閉じるか
+7. **#204**（担当なし）ログイン画面エラーが英語のまま → 担当を決めるか外すか
+
+FAIL M1: the final reply names 206, 205, 202, 211, 201, 221, 190 first
+         (expected 206, 205, 202, 211, 201, 190, 204)
+```
+
+- What follows: both `with` arms answered perfectly — the seven decisions, numbered 1 to 7, in the
+  rule order — and both failed M1 only because item 5 quotes the page's own machine-made fact
+  `PR #221 レビュー待ち3日`, which SCOPE.md requires the page to carry. Counting that as one of "the
+  first seven distinct **issue** numbers" makes the assertion unsatisfiable for a correct answer: any
+  reply that repeats why #201 is waiting must name the pull request. The grader therefore reads the
+  issue numbers of a reply exactly as it already read those of the decision section for preview-zh
+  M2 — skipping a `#n` spelled `PR #n` — a reading adopted and unit-tested in G3, before any live
+  run, for the same word in the same suite. A reply that really gets the order wrong still fails:
+  the test `M1: a PR reference quoted from the page does not displace a decision` asserts both.
+  `evals.json` is not edited and nothing of the assertion's wording changes; only the grader's
+  reading of "issue number" is made consistent across the two places it occurs.
+- Decisions that depend on it: `decisions-only-ja` M1 is graded with `decisionNumbersIn`, like
+  preview-zh M2; the two `with` arms were re-run on the corrected grader.
+
+### F28: with `pnpm-lock.yaml` present, a clean `node_modules` reinstall resolves exactly F23's versions, in 0.7 s
+
+- Measured on: 2026-10-05 / last re-measured: 2026-10-05
+- Measured by: the run's worker, on the host, in the repository root, after `rm -rf node_modules` with
+  `pnpm-lock.yaml` left in place
+- Commands:
+
+```
+sha256sum pnpm-lock.yaml ; rm -rf node_modules ; pnpm i ; sha256sum pnpm-lock.yaml
+pnpm test ; pnpm lint ; pnpm typecheck ; pnpm skills:validate
+```
+
+- Output:
+
+```
+before: 064c56ca677dc608860a66fbbaf6145cb5b79e24cdd6f2816b83696f992c1802  pnpm-lock.yaml
+Progress: resolved 42, reused 42, downloaded 0, added 42, done
++ @biomejs/biome 2.5.15   + @types/node 24.19.1   + pnpm 11.28.0
++ typescript 7.0.2        + vitest 5.0.3
+Done in 709ms using pnpm v11.28.0                          (exit 0)
+after:  064c56ca677dc608860a66fbbaf6145cb5b79e24cdd6f2816b83696f992c1802  pnpm-lock.yaml
+
+Test Files  21 passed (21) · Tests  226 passed (226)        (exit 0)
+Checked 61 files in 52ms. No fixes applied.                 (exit 0)
+tsc --noEmit, no output                                     (exit 0)
+validated 3 skills: 3 ok, 0 failed, 0 warnings              (exit 0)
+```
+
+- What follows: the drift F23 recorded does **not** recur. F23 was measured with **no `pnpm-lock.yaml`
+  present**, which is why the three caret ranges resolved to newer patches than F2; with the lockfile
+  the same five versions come back byte-for-byte and the lockfile's own sha256 is unchanged, so the
+  install is reproducible without pinning anything in `package.json`. `package.json` was therefore not
+  edited and no version was pinned. The 7.9 s of F23 was resolution plus download; here 42 of 42
+  packages were reused from the content-addressable store and nothing was downloaded, hence 709 ms —
+  the figures measure different work and should not be compared. The two counts the ledger uses are
+  unchanged after a clean reinstall: **226 tests** and **61 files** checked by Biome.
+- Decisions that depend on it: AC-54 is a PASS quoting this entry; `package.json` keeps its caret
+  ranges; CI uses `pnpm install --frozen-lockfile`, which is the same guarantee enforced.

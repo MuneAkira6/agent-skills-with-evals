@@ -1,0 +1,1020 @@
+{
+  "skill": {
+    "name": "verifiable-fetch",
+    "dir": "skills/verifiable-fetch",
+    "descriptionCharacters": 912
+  },
+  "siblings": [
+    "skill-trigger-probe",
+    "standup-digest"
+  ],
+  "queriesFile": "evals/verifiable-fetch/trigger.json",
+  "runsPerQuery": 3,
+  "model": {
+    "requested": "opus",
+    "resolved": "claude-opus-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "isolatedConfig": true,
+  "dateUtc": "2026-10-05",
+  "summary": {
+    "positives": {
+      "passed": 10,
+      "total": 10
+    },
+    "negatives": {
+      "passed": 10,
+      "total": 10
+    },
+    "brokenRuns": {},
+    "brokenTotal": 0,
+    "nearThreshold": [],
+    "siblingsFired": {},
+    "totalCostUsd": 5.371054000000003,
+    "incomplete": false
+  },
+  "perQuery": [
+    {
+      "id": "pos-ja-save-with-attachments",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-ja-url-to-docs",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-archive-screenshots",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-export-keep-attachments",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-zh-download-with-attachments",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-ja-check-every-image",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-broken-pngs-last-time",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-zh-archive-same-size",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-ja-describe-screenshots",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "pos-en-journals-for-review",
+      "shouldTrigger": true,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 3,
+      "rate": 1,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-en-download-a-pdf",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-ja-polish-a-report",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-en-create-an-issue",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-zh-compare-trackers",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-ja-github-comment",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-en-scrape-images",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-ja-convert-pngs",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-en-curl-403-question",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-zh-merge-markdown",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    },
+    {
+      "id": "neg-en-backup-redmine-db",
+      "shouldTrigger": false,
+      "runs": 3,
+      "valid": 3,
+      "triggered": 0,
+      "rate": 0,
+      "passed": true,
+      "incomplete": false,
+      "nearThreshold": false,
+      "brokenReasons": {},
+      "siblingsFired": {}
+    }
+  ],
+  "perRun": [
+    {
+      "queryId": "neg-en-backup-redmine-db",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 8303,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0854915
+    },
+    {
+      "queryId": "neg-en-backup-redmine-db",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6705,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0840165
+    },
+    {
+      "queryId": "neg-en-backup-redmine-db",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5806,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0823915
+    },
+    {
+      "queryId": "neg-en-create-an-issue",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 9137,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0885485
+    },
+    {
+      "queryId": "neg-en-create-an-issue",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 8314,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0875235
+    },
+    {
+      "queryId": "neg-en-create-an-issue",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 11751,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.09049850000000001
+    },
+    {
+      "queryId": "neg-en-curl-403-question",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 29714,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1221225
+    },
+    {
+      "queryId": "neg-en-curl-403-question",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 25867,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1139975
+    },
+    {
+      "queryId": "neg-en-curl-403-question",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 26535,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.11542250000000001
+    },
+    {
+      "queryId": "neg-en-download-a-pdf",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6482,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08379650000000001
+    },
+    {
+      "queryId": "neg-en-download-a-pdf",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 7415,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08384650000000002
+    },
+    {
+      "queryId": "neg-en-download-a-pdf",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 6501,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0835715
+    },
+    {
+      "queryId": "neg-en-scrape-images",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 31753,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.15138449999999998
+    },
+    {
+      "queryId": "neg-en-scrape-images",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 33578,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1578045
+    },
+    {
+      "queryId": "neg-en-scrape-images",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 24012,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1303545
+    },
+    {
+      "queryId": "neg-ja-convert-pngs",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 4949,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0809865
+    },
+    {
+      "queryId": "neg-ja-convert-pngs",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5984,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0830615
+    },
+    {
+      "queryId": "neg-ja-convert-pngs",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5710,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0828865
+    },
+    {
+      "queryId": "neg-ja-github-comment",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 7790,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08352050000000001
+    },
+    {
+      "queryId": "neg-ja-github-comment",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 10114,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08642050000000001
+    },
+    {
+      "queryId": "neg-ja-github-comment",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 8819,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0863455
+    },
+    {
+      "queryId": "neg-ja-polish-a-report",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 19792,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1002375
+    },
+    {
+      "queryId": "neg-ja-polish-a-report",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 34521,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.10011749999999998
+    },
+    {
+      "queryId": "neg-ja-polish-a-report",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 193650,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1052375
+    },
+    {
+      "queryId": "neg-zh-compare-trackers",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 37953,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.1248355
+    },
+    {
+      "queryId": "neg-zh-compare-trackers",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 29932,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.11236550000000001
+    },
+    {
+      "queryId": "neg-zh-compare-trackers",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 34947,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.11768550000000001
+    },
+    {
+      "queryId": "neg-zh-merge-markdown",
+      "run": 1,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5823,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08083449999999999
+    },
+    {
+      "queryId": "neg-zh-merge-markdown",
+      "run": 2,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 5346,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08074449999999998
+    },
+    {
+      "queryId": "neg-zh-merge-markdown",
+      "run": 3,
+      "status": "not-triggered",
+      "reason": null,
+      "fired": [],
+      "durationMs": 13741,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08072449999999999
+    },
+    {
+      "queryId": "pos-en-archive-screenshots",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4631,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07966449999999999
+    },
+    {
+      "queryId": "pos-en-archive-screenshots",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4964,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0796895
+    },
+    {
+      "queryId": "pos-en-archive-screenshots",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4844,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07953949999999999
+    },
+    {
+      "queryId": "pos-en-broken-pngs-last-time",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5136,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0809965
+    },
+    {
+      "queryId": "pos-en-broken-pngs-last-time",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5643,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0810865
+    },
+    {
+      "queryId": "pos-en-broken-pngs-last-time",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5167,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0808365
+    },
+    {
+      "queryId": "pos-en-export-keep-attachments",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4740,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0796125
+    },
+    {
+      "queryId": "pos-en-export-keep-attachments",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4815,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0795975
+    },
+    {
+      "queryId": "pos-en-export-keep-attachments",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 6291,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0796125
+    },
+    {
+      "queryId": "pos-en-journals-for-review",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5977,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0828025
+    },
+    {
+      "queryId": "pos-en-journals-for-review",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5856,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08028249999999999
+    },
+    {
+      "queryId": "pos-en-journals-for-review",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5181,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0795525
+    },
+    {
+      "queryId": "pos-ja-check-every-image",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5850,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07999049999999999
+    },
+    {
+      "queryId": "pos-ja-check-every-image",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4771,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07979549999999999
+    },
+    {
+      "queryId": "pos-ja-check-every-image",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4883,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0796955
+    },
+    {
+      "queryId": "pos-ja-describe-screenshots",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4829,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0805785
+    },
+    {
+      "queryId": "pos-ja-describe-screenshots",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4447,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07966849999999999
+    },
+    {
+      "queryId": "pos-ja-describe-screenshots",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 6363,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08265349999999999
+    },
+    {
+      "queryId": "pos-ja-save-with-attachments",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5122,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07957349999999999
+    },
+    {
+      "queryId": "pos-ja-save-with-attachments",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4650,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0797735
+    },
+    {
+      "queryId": "pos-ja-save-with-attachments",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 8353,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07957349999999999
+    },
+    {
+      "queryId": "pos-ja-url-to-docs",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 6918,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07959649999999999
+    },
+    {
+      "queryId": "pos-ja-url-to-docs",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4696,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07960149999999999
+    },
+    {
+      "queryId": "pos-ja-url-to-docs",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4976,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0803915
+    },
+    {
+      "queryId": "pos-zh-archive-same-size",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5542,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08040549999999999
+    },
+    {
+      "queryId": "pos-zh-archive-same-size",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5378,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.08086049999999999
+    },
+    {
+      "queryId": "pos-zh-archive-same-size",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5057,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0804255
+    },
+    {
+      "queryId": "pos-zh-download-with-attachments",
+      "run": 1,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 5206,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.07910950000000001
+    },
+    {
+      "queryId": "pos-zh-download-with-attachments",
+      "run": 2,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4744,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0791245
+    },
+    {
+      "queryId": "pos-zh-download-with-attachments",
+      "run": 3,
+      "status": "triggered",
+      "reason": null,
+      "fired": [
+        "verifiable-fetch"
+      ],
+      "durationMs": 4779,
+      "model": "claude-opus-5",
+      "claudeCodeVersion": "2.1.233",
+      "totalCostUsd": 0.0801895
+    }
+  ]
+}

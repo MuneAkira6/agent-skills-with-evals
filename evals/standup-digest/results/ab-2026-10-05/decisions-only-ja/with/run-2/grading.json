@@ -1,0 +1,32 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "the final reply names 206, 205, 202, 211, 201, 190, 204 first (expected 206, 205, 202, 211, 201, 190, 204)"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/digest.md mentions all 15 open tracked items"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "the arm took 23 s (limit 300 s)"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "25 distinct request(s), of which not a GET: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "Japanese, decisions first, each with its question, this time with the question before the title: \"## 今日決めること（7件、優先順）\" then \"1. **#206**（yui-kato）催促するか外すか — APIタイムアウト設定の見直し、待ち20日\" and \"4. **#211**（yui-kato）誰がいつレビューするか — CSV文字コード選択機能、レビュー待ち5日\"."
+  }
+]

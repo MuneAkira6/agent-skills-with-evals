@@ -1,0 +1,76 @@
+{
+  "skill": "verifiable-fetch",
+  "eval": "blocked-and-large-en",
+  "arm": "with",
+  "run": 1,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-W1tKAZ/ws",
+  "durationMs": 26658,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 7,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 12,
+    "cacheCreation": 12046,
+    "cacheRead": 199400,
+    "output": 1070,
+    "thinking": 28
+  },
+  "totalCostUsd": 0.14883600000000002,
+  "budgetUsd": 3,
+  "redactions": 0,
+  "mocks": [
+    {
+      "name": "tracker",
+      "requests": {
+        "GET /issues/102.json": 1,
+        "GET /attachments/download/303/export-dialog.png": 1,
+        "GET /media/303": 1,
+        "GET /attachments/download/304/export-log.zip": 1,
+        "GET /media/304": 1,
+        "GET /attachments/download/305/gateway-screenshot.png": 1,
+        "GET /media/305": 1,
+        "GET /attachments/download/306/settings.png": 1
+      },
+      "issuedTokens": [
+        "5574d35be524da016f59e15a3c7cf1a8",
+        "aad90e6a505d212466699b6bbc88767c",
+        "4b71922b3a1e0f35c136bd479fe1edbb"
+      ]
+    }
+  ],
+  "contamination": [],
+  "rawTranscript": "evals/.runs/verifiable-fetch/blocked-and-large-en/with/run-1/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": true
+}

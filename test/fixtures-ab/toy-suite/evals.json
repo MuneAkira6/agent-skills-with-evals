@@ -1,0 +1,18 @@
+{
+  "skill": "toy-skill",
+  "notes": "The A/B runner's own eval suite, kept under test/ and never under evals/: it exercises the runner, not a skill. It asks for no mock, so nothing of G1 binds a port.",
+  "evals": [
+    {
+      "id": "toy-write",
+      "prompt": "Write out/answer.md and say where it is.",
+      "mocks": [],
+      "workspace": { "dirs": ["out"] },
+      "expected_output": "out/answer.md exists and the reply says so.",
+      "assertions": [
+        { "id": "M1", "kind": "mechanical", "text": "out/answer.md exists among the outputs." },
+        { "id": "M2", "kind": "mechanical", "text": "The final reply is not empty." },
+        { "id": "J1", "kind": "judgment", "text": "The reply says where the file is, in the task's language." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "repo": "acme/tasks",
+  "timezone": "Asia/Tokyo",
+  "waitingLabels": ["status: waiting"],
+  "inProgressLabels": ["status: in progress"],
+  "members": ["aoi-tanaka", "ren-suzuki", "mei-mori", "kai-ito", "yui-kato"],
+  "thresholds": { "silentDays": 14, "staleDays": 5, "waitingDecisionDays": 5, "reviewDecisionDays": 2,
+                  "capDays": 30, "chronicDays": 60, "maxNarrated": 12 }
+}

@@ -1,0 +1,74 @@
+{
+  "skill": "verifiable-fetch",
+  "eval": "screenshots-ja",
+  "arm": "without",
+  "run": 1,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-H6L6te/ws",
+  "durationMs": 33359,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 8,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 16,
+    "cacheCreation": 12620,
+    "cacheRead": 268461,
+    "output": 2016,
+    "thinking": 364
+  },
+  "totalCostUsd": 0.18722830000000001,
+  "budgetUsd": 3,
+  "redactions": 4,
+  "mocks": [
+    {
+      "name": "tracker",
+      "requests": {
+        "GET /issues/101.json": 1,
+        "GET /attachments/download/301/board-before.png": 2,
+        "GET /attachments/download/302/board-after.png": 3,
+        "GET /media/302": 1
+      },
+      "issuedTokens": [
+        "60c69306d70eee303bde859ec4318568",
+        "d09d66ddca71ab130c96177949918a02",
+        "e3caf76830400ecce54d449349de3de7"
+      ]
+    }
+  ],
+  "contamination": [
+    "Bash names a path outside the sandbox: /tmp/issue101.json"
+  ],
+  "rawTranscript": "evals/.runs/verifiable-fetch/screenshots-ja/without/run-1/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": false
+}

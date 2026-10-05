@@ -1,0 +1,87 @@
+{
+  "skill": "standup-digest",
+  "eval": "decisions-only-ja",
+  "arm": "without",
+  "run": 2,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-4GLLSN/ws",
+  "durationMs": 91351,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 9,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 16,
+    "cacheCreation": 20869,
+    "cacheRead": 284339,
+    "output": 7271,
+    "thinking": 2957
+  },
+  "totalCostUsd": 0.3203767,
+  "budgetUsd": 3,
+  "redactions": 0,
+  "mocks": [
+    {
+      "name": "github",
+      "requests": {
+        "GET /": 1,
+        "GET /repos/acme/tasks": 2,
+        "GET /repos/acme/tasks/issues": 2,
+        "GET /repos/acme/tasks/pulls": 2,
+        "GET /orgs/acme/repos": 2,
+        "GET /repos/acme/tasks/milestones": 2,
+        "GET /repos/acme/tasks/issues/203/comments": 1,
+        "GET /repos/acme/tasks/issues/192/comments": 1,
+        "GET /repos/acme/tasks/issues/205/comments": 1,
+        "GET /repos/acme/tasks/issues/202/comments": 1,
+        "GET /repos/acme/tasks/issues/215/comments": 1,
+        "GET /repos/acme/tasks/issues/201/comments": 1,
+        "GET /repos/acme/tasks/issues/190/comments": 1,
+        "GET /repos/acme/tasks/issues/191/comments": 1,
+        "GET /repos/acme/tasks/issues/212/comments": 1,
+        "GET /repos/acme/tasks/issues/207/comments": 1,
+        "GET /repos/acme/tasks/issues/208/comments": 1,
+        "GET /repos/acme/tasks/issues/206/comments": 1,
+        "GET /repos/acme/tasks/issues/209/comments": 1
+      },
+      "issuedTokens": []
+    }
+  ],
+  "contamination": [
+    "Bash names a path outside the sandbox: /dev/null",
+    "Bash names a path outside the sandbox: /tmp/issues.json",
+    "Bash names a path outside the sandbox: /tmp/comments"
+  ],
+  "rawTranscript": "evals/.runs/standup-digest/decisions-only-ja/without/run-2/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": false
+}

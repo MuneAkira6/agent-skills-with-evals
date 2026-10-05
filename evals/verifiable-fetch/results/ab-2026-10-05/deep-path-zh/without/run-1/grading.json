@@ -1,0 +1,32 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "wording.png: out/archive/2026/10/customer-escalations/notification-wording-review/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png (316 bytes, sha256 a398ab8aca6a272e160dead7cf8e4904b1acd4ccbf60e192d0b18fa841780871); notice.png: out/archive/2026/10/customer-escalations/notification-wording-review/通知:設定?.png (739 bytes, sha256 9c3acf9da6d30444d64fef71d04c6c5222808c55f1edc254e48cd35e19b8ef9b)"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "longest absolute path 241 characters (out/archive/2026/10/customer-escalations/notification-wording-review/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png), limit 240; over the limit: out/archive/2026/10/customer-escalations/notification-wording-review/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png (241)"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "paths checked: 3; with a character Windows forbids: out/archive/2026/10/customer-escalations/notification-wording-review/通知:設定?.png (segment \"通知:設定?.png\")"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "no Markdown under out/ contains both original names; Markdown files found: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "Chinese and it says where — \"Redmine #103 已保存完成,目录 `out/archive/2026/10/customer-escalations/notification-wording-review/` 下包含:\" — but it says nothing about a file name being changed, because none was: it lists \"`通知:設定?.png`\" and saved that name verbatim, which is also why mechanical M3 failed on \"out/archive/.../attachments/通知:設定?.png (segment 通知:設定?.png)\"."
+  }
+]

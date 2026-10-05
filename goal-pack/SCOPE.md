@@ -1,6 +1,6 @@
 # agent-skills-with-evals — scope and contract
 
-**Contract status: DRAFT.** Frozen in G0 (content unchanged, date added); rewritten as AS-BUILT in G5.
+**Contract status: FROZEN 2026-10-05; AS-BUILT section appended 2026-10-05.** Frozen in G0 (content unchanged, date added); the contract text that follows is unchanged, and every difference the build has from it is recorded in the `# AS-BUILT — 2026-10-05` section at the end of this file.
 
 Three Claude Code skills from the author's practice, each rebuilt so that a reader can run it, and each
 with an eval suite whose numbers come from real runs of the CLI:
@@ -737,3 +737,212 @@ links, every action still pinned, no transcript under `evals/.runs/` committed).
 Publishing to a wiki or posting to GitHub; GitHub Projects (its API needs authentication); a real
 Redmine; other trackers; Windows during the run (the author's step afterwards: the probe on Windows,
 the tests on Windows); grading by people.
+
+---
+
+# AS-BUILT — 2026-10-05
+
+Everything above is the contract as frozen in G0. This section is the record of **what was built
+instead, where it differs, and why**. The contract text above is deliberately not edited: the value of
+a frozen contract is that it still says what was agreed, so that a difference is visible as a
+difference rather than as a contract that always said so.
+
+Eleven differences. Two of them are also in the Contract changes table of `PROGRESS.md`, because they
+change what a committed artefact says; the other nine are refinements inside clauses the contract left
+open, or readings forced by a measured fact. Nothing in this list is a dropped requirement: every
+acceptance row of `PROGRESS.md` has a verdict, and the three that could not be satisfied literally
+(AC-26, the `not-loaded` rule, `decisions-only-ja` M1) are annotated there with the fact that forced
+the reading.
+
+## 1. `checkLoaded: false` in the A/B runner, with `skillInInit` as the replacement signal
+
+**Contract:** "The stream parser" rule 1 and "The A/B runner" — the `not-loaded` reason classifies a
+run as broken when the init event does not list the skill.
+
+**As built:** `harness/ab.ts` passes `checkLoaded: false`, so `not-loaded` is switched off for **both**
+A/B arms, and `run.json` carries a boolean `skillInInit` computed from the init event's `skills` list
+instead.
+
+**Why:** the `without` arm has no skill installed **by design**. Under the frozen rule every `without`
+arm would be a broken run and no A/B comparison could ever be made. Switching the check off for only
+the `with` arm was rejected deliberately: if the CLI's init event did not list a project skill under
+the arm's flags, every live arm of G4 would have become a breakage, and that would only have been
+discovered while spending live calls. So the signal is **recorded rather than judged** — G4 reads
+`skillInInit` on every `with` arm before any A/B number is believed, and all 7 `with` runs read `true`
+against all 7 `without` runs `false`. The probe keeps the frozen rule unchanged; it installs the skill
+itself, which is the case F7 describes. Also in the Contract changes table.
+
+## 2. `agreementTrivial` beside `runsAgree`
+
+**Contract:** "**`report`** writes … whether the runs agree".
+
+**As built:** `benchmark.json` carries `agreementTrivial` beside `runsAgree`, and the column of
+`benchmark.md` reads `yes (empty: neither run produced one)` when every run of an arm produced an
+empty agreement key.
+
+**Why:** `runsAgree` is `new Set(keys).size === 1`, so two runs that produced **no page at all** have
+the same (empty) key and the column said `yes` — true of the keys, false about the runs.
+`preview-zh/without` is exactly that case: 1/12 mechanical, and neither run wrote a page. The clause
+the contract fixes is "whether the runs agree", and this reports it more precisely rather than
+differently; `runsAgree` itself is unchanged for anything reading the JSON. Also in the Contract
+changes table. No measurement was touched — `report` makes no live call.
+
+## 3. `run.json` records `claudeArgs`, not the launcher's command line
+
+**Contract:** `run.json` records the arguments the CLI was launched with.
+
+**As built:** `harness/ab.ts` builds `claudeArgs` (the CLI's own arguments, from `-p` onwards) and
+writes **that**, never the resolved `argv` of the spawned process.
+
+**Why:** under `CLAUDE_CALL_ENV_FILE` the spawned process is
+`bash <repo>/skills/.../call-env.sh <env file> … claude -p …`, so the resolved `argv` contains an
+absolute path from the host — and the path of the environment file. A committed result must not carry
+either. Redacting `argv` was rejected as the fix: the fix is **not to write it**. A test with a control
+proves the point, asserting that the old field would have carried `homedir()`. This was a bus REJECT of
+G1 and is the reason the field exists under this name.
+
+## 4. `rawTranscript` and `generatedFrom` relativised; the probe's `queriesFile` and `skill.dir` too
+
+**Contract:** the result files record where the transcript, the queries file and the skill directory
+are.
+
+**As built:** all four are written **relative to the working directory**, through a `pathForRecord`
+helper (`harness/ab.ts:304`, `skills/skill-trigger-probe/scripts/probe.ts:39`).
+
+**Why:** the same reason as 3 — no home path may reach a committed result. `skill.dir` and
+`queriesFile` were found absolute **after** three probes had already been run live; the probes were
+re-run and the absolute-path results discarded ($16.11 of the 17.7966 discarded figure). The paths are
+still unambiguous for a reader, because every command in the ledger is quoted from the repository root.
+
+## 5. The environment file is sourced with the real `HOME`; overrides are applied only afterwards, through `env`
+
+**Contract:** the nested-CLI rules already say the environment file is **sourced** — "the file is only
+sourced, by the launcher and by G0's two calls".
+
+**As built:** both launchers (`skills/skill-trigger-probe/scripts/lib/claude.ts`,
+`skills/standup-digest/scripts/claude.ts`) apply `opts.env` overrides **only through `exec env` after
+the file has been sourced**, never by setting them in the shell that sources it:
+
+```
+bash call-env.sh <file> <env-args…> <cmd>     # sources <file>, then: exec env <env-args…> <cmd>
+```
+
+**Why:** this is not a change to the contract — it is the contract's reading, and it had to be measured
+to be found. The first A/B arm of G4 came back `broken (auth)` in 3 seconds. A direct control showed
+why: sourcing the file with no overrides gives `result=PONG`; sourcing it in a shell where `HOME` and
+`CLAUDE_CONFIG_DIR` are already overridden gives `Not logged in · Please run /login`. The file
+authenticates **relative to the real `HOME`**. Recorded as **F26**. Six arms were re-run
+($1.4289 discarded). The clause is listed here because a reader of the contract would not know that the
+order matters, and the next person to write a launcher needs to.
+
+## 6. `run.json` is written **before** the grader runs
+
+**Contract:** the runner writes `run.json` and grades the run.
+
+**As built:** `harness/ab.ts:312` writes `run.json`, then calls `grade()` at :324, then rewrites the
+file at :337 with the grades added.
+
+**Why:** the contract fixes no order, and the obvious one (grade, then write) is wrong. The grader's
+contract is `grade(evalId, runDir, context)` — it reads the run **from disk**, including the mock
+request log and `wsPath`. With `run.json` written afterwards, every assertion that reads it answered
+"cannot be decided", and six arms had to be re-run. The double write is deliberate and cheap.
+
+## 7. The `standup-digest` grader reads `PR #n` as a pull request, not an issue number
+
+**Contract:** the expected-outcome table's `decisions-only-ja` M1 counts the issue numbers a reply
+quotes; `preview-zh` M2 likewise.
+
+**As built:** `evals/standup-digest/grade.ts` uses `decisionNumbersIn`, which skips a number written as
+`PR #n`.
+
+**Why:** a **correct** reply to `decisions-only-ja` necessarily quotes `PR #221`, because the waiting
+pull request is why one of the decisions is a decision. Counting it as an issue number made M1
+unsatisfiable by a perfect answer — the assertion, not the answer, was wrong. Recorded as **F27**; two
+arms were re-run ($0.2584 discarded). The same reading had already been forced in G3 by `preview-zh`
+M2, where the **given** eval corrected the page.
+
+## 8. `requireKey?: string | false` on the tracker mock
+
+**Contract:** the Redmine-shaped mock requires an API key.
+
+**As built:** `harness/mocks/tracker.ts:37` types the option as `string | false`, and `false` serves
+the API without a key.
+
+**Why:** the fetcher's own failure tests need a server that answers 200 without a key, so that the
+assertion under test is the one that fails and not the authentication. A separate mock would have
+duplicated the whole server for one branch. `undefined` could not be used for "no key required",
+because that is the default and the default must require one.
+
+## 9. `facts.requests` is normalised for the identity checks
+
+**Contract:** "The number of requests is printed and **kept in `facts.json`**", and AC-26 asks that
+"the facts are identical (sha256 of both `facts.json`)".
+
+**As built:** the field is kept, and the two identity checks compare the files with
+`"requests": <n>` substituted (`test/digest-rules.test.ts:111`, `test/digest-page.test.ts:163`).
+
+**Why:** both clauses cannot hold literally. Following `Link` with a smaller page costs more HTTP
+requests — measured at 26 against 49 — so the one field the contract requires the file to carry is the
+one field that must differ. Everything the page and the grader read is identical: the items, the lanes,
+the day counts, the decisions and their order, and the hashes match once the count is normalised.
+Dropping the field would break the contract clause outright; keeping it serves a reader of a committed
+result who wants to know how many calls it took. Recorded as **F25**. A consequence worth stating:
+the page's footer hash is of `facts.json` **as written**, so it moves with the API's page size. Two
+runs at the same page size still give the same page (AC-37), but **the footer hash is not a content
+fingerprint** — the README says so too.
+
+## 10. Redaction and the launcher are deliberately duplicated
+
+**Contract:** "a skill directory stands alone … may not import from another skill".
+
+**As built:** `skills/verifiable-fetch/scripts/redact-url.ts` (844 bytes) restates the parts of
+`skills/skill-trigger-probe/scripts/lib/redact.ts` (3,130 bytes) that it needs, and
+`skills/standup-digest/scripts/claude.ts` (4,883 bytes) restates
+`skills/skill-trigger-probe/scripts/lib/claude.ts` (5,797 bytes).
+
+**Why:** this is the contract being **kept**, not bent, and it is listed here because duplication looks
+like an oversight and a future reader will try to remove it. The condition is that copying one
+directory into another repository's `.claude/skills/` makes the skill work. A shared module would make
+`verifiable-fetch` depend on `skill-trigger-probe` being installed too. The duplication is not
+verbatim: each copy carries only what its skill needs (`redact-url.ts` adds `key` to its name list for
+signed URLs; `standup-digest`'s launcher has no `checkLoaded` path, because it never loads a skill).
+The cost is accepted: a fix to the redaction rules must be applied twice, and the tests of both are
+separate for that reason.
+
+## 11. `scoreOf`'s two switches are the evaluation's, and they stay — documented, not moved
+
+**Contract:** `scoreOf` computes `max(3·min(w,cap), 2·min(r,cap))`, halved when chronic, with the
+waiting/blocked/idle additions. It specifies no parameters beyond the config.
+
+**As built:** `scoreOf` takes an optional third argument with `chronicDiscount` and `sumInsteadOfMax`.
+The decision taken in G5 was to **document them as the evaluation's own switches** rather than remove
+them, in `skills/standup-digest/references/rules.md` under "The two switches in `scoreOf`, and what
+they are not".
+
+**Why both parts of that decision:** they exist so that the two deliberate choices of the formula can
+be **shown** to matter — a test turns the discount off and watches #205 score 90.8 instead of 45.8 and
+take first place, and turns the `max` into a sum and watches one stall counted twice (35 becomes 55).
+That is the practice's own finding (materials, section 7: the ranking double-counted the same stall)
+demonstrated rather than asserted. Removing them would have deleted the evidence for AC-29, which is
+already judged and whose evidence quotes `scoreOf(..., { chronicDiscount: false })`. What makes them
+safe to keep is stated in the reference where someone would look: **nothing in the pipeline passes
+them** — `rules.ts:415` is the only non-test call site and it passes two arguments — and
+`digest.config.json` has no key for either. The configuration is `capDays` and `chronicDays`; the shape
+of the formula is not configuration.
+
+## Not differences, but worth recording
+
+- **The pin comment of G4** said "all three fixes" where six pin moves are listed. Corrected to "all
+  six fixes" in G5. The hashes it asserts are unchanged.
+- **The `Deliverables digest:` command was widened** in G5 from `skills harness test evals` to
+  `skills harness test evals docs .github`, because `docs/reading-evals.md` and
+  `.github/workflows/ci.yml` are deliverables of this goal. The widening is stated in the comment
+  beside the pin, so that a digest from an earlier goal is not compared with a digest from this one.
+- **Windows was not run.** The contract already puts it out of scope ("Windows during the run"). F13
+  and F22 are observations from the author's Windows PC on 2026-10-02 — evidence that this skeleton is
+  portable by construction, **not** evidence that this version was run there. The `windows` job of
+  `.github/workflows/ci.yml` exists to run it.
+- **The contamination scanner's absolute-path pattern has a known false positive** (an API route
+  written as prose is read as a filesystem path): 3 of this run's 14 flags. It was **not** fixed, on
+  purpose — changing the scanner after the measurement would mean re-measuring. Recorded as incidental
+  finding 4 of `PROGRESS.md` with two candidate fixes named for afterwards.

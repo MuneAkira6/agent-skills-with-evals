@@ -1,0 +1,38 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/101.md contains all four: ボード画面でカードの並び順が保存されない / ページを再読み込みする / 再現しました。 / 画像を 2 枚添付しました。"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "board-before.png: out/attachments/101/board-before.png (812 bytes, sha256 39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627); board-after.png: out/attachments/101/board-after.png (812 bytes, sha256 99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f)"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "1 token(s) issued; files containing one: none; in the final reply: no"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "tracker 301: GET /attachments/download/301/board-before.png x1; media 302: GET /media/302 x1; non-GET requests: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "out/101.md says what each image shows, in the colours and the order the assertion names: \"並べ替え前のボード。上から青・黄・赤の順でカードが並んでいる。\" under \"### board-before.png\", and \"再読み込み後のボード。上から赤・青・黄の順に変わっており、ドラッグで並べ替えた順序が保持されず元の並びとも異なる状態になっている。\" under \"### board-after.png\" — prose, not a link or a file name."
+  },
+  {
+    "id": "J2",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "The final reply is Japanese and names both locations: \"#101「ボード画面でカードの並び順が保存されない」を `out/101.md` に、添付2点を `out/attachments/101/` に保存しました。\""
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "path": "out/digest.md",
+    "size": 2176,
+    "sha256": "15aa2da520089ffd331a06ece84c40fafff77effaefdabe62f0369fa6bb5b400",
+    "head64": "KipTcHJpbnQgMTPvvIgxMC8544G+44Gn44O75q6L44KKIDQg5pel77yJ772cIOacquWujOS6hiAxMy8xNSDvvQ==",
+    "copied": true
+  },
+  {
+    "path": "out/facts.json",
+    "size": 11534,
+    "sha256": "4c0046dff4c0eb5d735c5ad6b410a67475a4308286be5f57550c02e7f6a41d52",
+    "head64": "ewogICJub3ciOiAiMjAyNi0xMC0wNFQyMzozMDowMC4wMDBaIiwKICAidG9kYXkiOiAiMjAyNi0xMC0wNSIsCg==",
+    "copied": true
+  },
+  {
+    "path": "out/narrate-input.json",
+    "size": 1935,
+    "sha256": "7c104b0818d606f7f204663fe77684755b1489f95b4d2c55c89b7909f4779964",
+    "head64": "eyJkZWNpc2lvbnMiOlt7ImFzc2lnbmVlcyI6WyJ5dWkta2F0byJdLCJpZGxlX2RheXMiOjIsImxpbmtlZF9wdQ==",
+    "copied": true
+  },
+  {
+    "path": "out/prompt.md",
+    "size": 3776,
+    "sha256": "adc3e2e6eaad11a853a1486c84910d705a333b2555219b88c36e1d8f1f80198c",
+    "head64": "5Lul5LiL44GuIEpTT04g44Gv44CB6KaP5YmH44GM6YG444KT44Gg5pyd5Lya44Gu6aCF55uu44Gn44GC44KL4w==",
+    "copied": true
+  },
+  {
+    "path": "out/usage.jsonl",
+    "size": 346,
+    "sha256": "f83d0a9ff4082ea779e5d8f1c5f6da262e56c9a92753a7fa42d9398bb5f8135c",
+    "head64": "eyJkYXRlIjoiMjAyNi0xMC0wNSIsImF0dGVtcHQiOjEsIm1vZGVscyI6W10sImlucHV0IjowLCJjYWNoZV9jcg==",
+    "copied": true
+  }
+]

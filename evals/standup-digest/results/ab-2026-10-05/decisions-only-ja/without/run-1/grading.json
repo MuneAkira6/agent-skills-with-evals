@@ -1,0 +1,32 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "the final reply names 205, 191, 190, 202, 206, 207 first (expected 206, 205, 202, 211, 201, 190, 204)"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": false,
+    "evidence": "out/digest-2026-10-05.md does not mention #201, #203, #204, #209, #212"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "the arm took 84 s (limit 300 s)"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "26 distinct request(s), of which not a GET: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "Japanese and it does put decisions first, but they are not the rules' decisions and each is a different claim. It says \"朝会で先に決めるべきことは次の4つです。\" — four, not seven — and its items merge and invent: \"**レビュー待ちPR 2件が滞留** — PR #210（kai-ito→aoi-tanakaレビュー依頼、10/4から停止）\" names #210, which is approved and quiet, and \"#191（ヘルプ誤字、priority:high）\" is a silent item the rules keep off the decision list. Graded false on \"puts the decisions first\": these are not them."
+  }
+]

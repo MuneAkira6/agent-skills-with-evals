@@ -1,0 +1,70 @@
+{
+  "skill": "verifiable-fetch",
+  "eval": "screenshots-ja",
+  "arm": "with",
+  "run": 1,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-aMAWXN/ws",
+  "durationMs": 17294,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 8,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 12,
+    "cacheCreation": 12346,
+    "cacheRead": 199677,
+    "output": 1060,
+    "thinking": 42
+  },
+  "totalCostUsd": 0.1506121,
+  "budgetUsd": 3,
+  "redactions": 0,
+  "mocks": [
+    {
+      "name": "tracker",
+      "requests": {
+        "GET /issues/101.json": 1,
+        "GET /attachments/download/301/board-before.png": 1,
+        "GET /attachments/download/302/board-after.png": 1,
+        "GET /media/302": 1
+      },
+      "issuedTokens": [
+        "46ef4cc7b2cdcdc7a149aaf28a2b20b0"
+      ]
+    }
+  ],
+  "contamination": [],
+  "rawTranscript": "evals/.runs/verifiable-fetch/screenshots-ja/with/run-1/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": true
+}

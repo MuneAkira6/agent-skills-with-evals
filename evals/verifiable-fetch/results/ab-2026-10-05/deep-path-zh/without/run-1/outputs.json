@@ -1,0 +1,23 @@
+[
+  {
+    "path": "out/archive/2026/10/customer-escalations/notification-wording-review/issue-103.json",
+    "size": 1683,
+    "sha256": "a731f971aa947ad8176245493efd34e12e3af972c9dfec6fa6fa24cee57b826f",
+    "head64": "eyJpc3N1ZSI6eyJpZCI6MTAzLCJwcm9qZWN0Ijp7ImlkIjoxLCJuYW1lIjoiQWNtZSBUYXNrcyJ9LCJ0cmFjaw==",
+    "copied": true
+  },
+  {
+    "path": "out/archive/2026/10/customer-escalations/notification-wording-review/notification-settings-wording-review-before-and-after-comparison-for-the-customer-escalation-meeting-on-the-fifth-of-october-final-revised-ver2-jp.png",
+    "size": 316,
+    "sha256": "a398ab8aca6a272e160dead7cf8e4904b1acd4ccbf60e192d0b18fa841780871",
+    "head64": "iVBORw0KGgoAAAANSUhEUgAAAPAAAAB4CAIAAABD1OhwAAABA0lEQVR42u3SAQ0AMAjAMPRc2s2gADc3cxf4gA==",
+    "copied": true
+  },
+  {
+    "path": "out/archive/2026/10/customer-escalations/notification-wording-review/通知:設定?.png",
+    "size": 739,
+    "sha256": "9c3acf9da6d30444d64fef71d04c6c5222808c55f1edc254e48cd35e19b8ef9b",
+    "head64": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAACqklEQVR42u3c0VXDQBRDwS2GaqmWDkwPSTCWNA==",
+    "copied": true
+  }
+]

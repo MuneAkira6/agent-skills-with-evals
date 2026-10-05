@@ -1,0 +1,38 @@
+[
+  {
+    "id": "M1",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "out/issue-101.md contains all four: ボード画面でカードの並び順が保存されない / ページを再読み込みする / 再現しました。 / 画像を 2 枚添付しました。"
+  },
+  {
+    "id": "M2",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "board-before.png: out/board-before.png (812 bytes, sha256 39ae80397eed9d46b448385be587018fcc0a31b4b2de2e05ae198b4645e95627); board-after.png: out/board-after.png (812 bytes, sha256 99b66246758c34aa8a99d79ab8e6dadcfbadd21148daf03a9c73f6df2a40ed8f)"
+  },
+  {
+    "id": "M3",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "3 token(s) issued; files containing one: none; in the final reply: no"
+  },
+  {
+    "id": "M4",
+    "kind": "mechanical",
+    "passed": true,
+    "evidence": "tracker 301: GET /attachments/download/301/board-before.png x2; media 302: GET /media/302 x1; non-GET requests: none"
+  },
+  {
+    "id": "J1",
+    "kind": "judgment",
+    "passed": false,
+    "evidence": "out/issue-101.md says nothing about what the images show. Its only text about them is the two list lines \"- [board-before.png](board-before.png) — 並べ替える前 (812 bytes, 鈴木 蓮, 2026-09-28T01:16:00Z)\" and \"- [board-after.png](board-after.png) — 再読み込みした後 (812 bytes, …)\", which repeat the attachment's own metadata description. No text about the images names a colour or an order: lines 31 and 32 are the only ones that mention board-before.png or board-after.png, and neither says what is in them. (The file does contain 順番 twice, on lines 17 and 27, but those are the issue's own description as the tracker wrote it — \"再読み込みすると元の順番に戻ります。\" and \"並べ替えた順番のまま表示される。\" — not a description of either screenshot.)"
+  },
+  {
+    "id": "J2",
+    "kind": "judgment",
+    "passed": true,
+    "evidence": "The final reply is Japanese and names the files: \"Redmine の Issue #101 を取得し、`out/` に以下を保存しました。\" followed by \"`out/issue-101.md` — 概要・説明・履歴（journals）をMarkdown化\" and \"`out/board-before.png`, `out/board-after.png` — 添付ファイル2件(各812 bytes)\"."
+  }
+]

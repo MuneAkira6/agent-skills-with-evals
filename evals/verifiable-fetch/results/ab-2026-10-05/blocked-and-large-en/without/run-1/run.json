@@ -1,0 +1,89 @@
+{
+  "skill": "verifiable-fetch",
+  "eval": "blocked-and-large-en",
+  "arm": "without",
+  "run": 1,
+  "status": "completed",
+  "reason": null,
+  "wsPath": "/tmp/ab-run-c5mT0P/ws",
+  "durationMs": 129128,
+  "exitCode": 0,
+  "timedOut": false,
+  "turns": 11,
+  "stopReason": "completed",
+  "resultSubtype": "success",
+  "model": {
+    "requested": "sonnet",
+    "resolved": "claude-sonnet-5"
+  },
+  "claudeCodeVersion": "2.1.233",
+  "tokens": {
+    "input": 22,
+    "cacheCreation": 16496,
+    "cacheRead": 389952,
+    "output": 4178,
+    "thinking": 1704
+  },
+  "totalCostUsd": 0.2793516,
+  "budgetUsd": 3,
+  "redactions": 16,
+  "mocks": [
+    {
+      "name": "tracker",
+      "requests": {
+        "GET /issues/102.json": 1,
+        "GET /attachments/download/303/export-dialog.png": 4,
+        "GET /attachments/download/304/export-log.zip": 2,
+        "GET /attachments/download/305/gateway-screenshot.png": 6,
+        "GET /attachments/download/306/settings.png": 4,
+        "GET /media/303": 2,
+        "GET /media/304": 1,
+        "GET /media/305": 4
+      },
+      "issuedTokens": [
+        "98b5132ecd5173b4ba33b4089293c709",
+        "6e2ae452f8d050e421c85b9087d3cb21",
+        "2c6cc743e78ded55ead058b99d13b7ac",
+        "748795d73c5fea1b64021ea78d562f71",
+        "004a9fd5fd70088ad31c3166baaf2f99",
+        "100a61c42b204a2d65f548a90ddffb66",
+        "a4c7181117c6576fa3d3861be88a5f43",
+        "e4fa0a5df786e4df8ed3b88d66cf3135",
+        "229f41737355af88be72db1653c37b8e",
+        "bea7a808016f2b60bb605ca5d49b5c8e",
+        "018553da1ee0d4130d3a4f9cbb422ccc",
+        "0e1e77a7532383927990ec3fdd9bad68"
+      ]
+    }
+  ],
+  "contamination": [
+    "Bash names a path outside the sandbox: /tmp/test303.png",
+    "Bash names a path outside the sandbox: /dev/null",
+    "Bash names a path outside the sandbox: /tmp/305test.png"
+  ],
+  "rawTranscript": "evals/.runs/verifiable-fetch/blocked-and-large-en/without/run-1/transcript.jsonl",
+  "gradingError": null,
+  "claudeArgs": [
+    "-p",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--strict-mcp-config",
+    "--permission-mode",
+    "bypassPermissions",
+    "--max-budget-usd",
+    "3",
+    "--disallowedTools",
+    "WebFetch",
+    "WebSearch",
+    "Bash(sudo:*)",
+    "Bash(docker:*)",
+    "Bash(git push:*)",
+    "--append-system-prompt",
+    "You are running inside an evaluation sandbox. Work only inside the current working directory. Do not read, list or search anything outside it. The services the task names are on 127.0.0.1; use no other network service. Do not print environment variables."
+  ],
+  "skillInInit": false
+}
