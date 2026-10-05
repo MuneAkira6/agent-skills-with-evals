@@ -1,9 +1,9 @@
 import { spawnSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, type RmOptions, readFileSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { join, sep } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import type { ProbeResult } from '../skills/skill-trigger-probe/scripts/probe.ts'
+import { type ProbeResult, removeProject } from '../skills/skill-trigger-probe/scripts/probe.ts'
 import { FAKE_CLI, readLog } from './support/fake.ts'
 import { makeTempDir, plantSkill, removeTempDir } from './support/tmp.ts'
 
@@ -178,7 +178,7 @@ describe('the probe end to end on the fake CLI', () => {
       expect(entry.projectEntries).toEqual(['.claude'])
       expect(entry.projectSkills).toEqual(['long-desc', 'tea-timer'])
       expect(entry.cwd.startsWith(join(tmpdir(), 'skill-trigger-probe-'))).toBe(true)
-      expect(entry.cwd.endsWith('/ws')).toBe(true)
+      expect(entry.cwd.endsWith(`${sep}ws`)).toBe(true)
     }
     expect(existsSync(entries[0].cwd)).toBe(false)
   })
@@ -231,7 +231,8 @@ describe('the probe configuration isolation', () => {
     expect(new Set(dirs).size).toBe(12)
     for (const dir of dirs) {
       expect(dir.startsWith(join(tmpdir(), 'skill-trigger-probe-'))).toBe(true)
-      expect(dir).toMatch(/\/cfg\/run-\d+$/)
+      // `\` on Windows, `/` elsewhere
+      expect(dir).toMatch(/[\\/]cfg[\\/]run-\d+$/)
       expect(existsSync(dir)).toBe(false)
     }
   })
@@ -242,5 +243,35 @@ describe('the probe configuration isolation', () => {
     expect(r.status).toBe(0)
     const dirs = new Set(readLog(r.log).map((e) => e.claudeConfigDir))
     expect([...dirs]).toEqual([inherited])
+  })
+})
+
+// Found on Windows after the run: the removal of the temporary project threw EPERM (a CLI that had
+// just exited still held the directory), the error left probe() from its `finally`, and seven minutes
+// of measurement were never written.
+describe('removing the temporary project', () => {
+  it('a removal that fails is reported, and does not throw', () => {
+    const lines: string[] = []
+    const failing = (): void => {
+      throw Object.assign(new Error('EPERM, Permission denied'), { code: 'EPERM' })
+    }
+    expect(() =>
+      removeProject('skill-trigger-probe-x', (l) => lines.push(l), failing),
+    ).not.toThrow()
+    expect(lines).toEqual([
+      'probe: could not remove skill-trigger-probe-x (EPERM); the results are written, remove it by hand',
+    ])
+  })
+
+  it('is retried, since the directory is held only for a moment', () => {
+    let seen: RmOptions | undefined
+    removeProject(
+      'skill-trigger-probe-x',
+      () => {},
+      (_path, options) => {
+        seen = options
+      },
+    )
+    expect(seen).toMatchObject({ recursive: true, force: true, maxRetries: 10 })
   })
 })

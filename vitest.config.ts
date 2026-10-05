@@ -5,5 +5,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   test: {
     include: ['test/**/*.test.ts'],
+    // The end-to-end tests start the fake CLI a dozen times each. On Windows a Node start costs a
+    // few hundred milliseconds, and under the whole suite's parallel load one such test took 8 s,
+    // past Vitest's 5-second default (found after the run, on the author's PC).
+    testTimeout: 30_000,
   },
 })

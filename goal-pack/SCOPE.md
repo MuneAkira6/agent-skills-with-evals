@@ -946,3 +946,88 @@ of the formula is not configuration.
   written as prose is read as a filesystem path): 3 of this run's 14 flags. It was **not** fixed, on
   purpose — changing the scanner after the measurement would mean re-measuring. Recorded as incidental
   finding 4 of `PROGRESS.md` with two candidate fixes named for afterwards.
+
+## The one human intervention during the run
+
+At 10:25:04 the bus's review of G2 was cut off at the hook's limit for one review (1740 s): the bus was
+re-running the tests and starting the mocks itself (`BUS-LOG.md`, "waking the bus failed", rc=124, 33
+turns, a CLI-reported `total_cost_usd` of 7.0735 that the kit's tally does not count). The worker
+stopped with it. The author raised the review limit to 2700 s and the relay hook's timeout to 3480 s in
+the run copy's `.claude/` (ignored by git), checked that `--status` reported the hook timeout as ok, and
+resumed the same worker at 10:27 with the instruction to report G2 again and to say that it was a
+re-report after a cut-off review. No file of the repository was touched. The review of G2 then took
+about three minutes (review #4, PASS).
+
+## Changes after the run
+
+Made by a human on 2026-10-05, after the bus had answered DONE; not reviewed by the bus.
+
+1. **Redaction.** The run recorded the host's user name (in G1's check for paths of this machine) and
+   the names of other users' files and processes in the shared `/tmp` (in G5's check that nothing of
+   the run was left). Both are replaced in `PROGRESS.md` (`<the host's user name>`, and a sentence
+   saying the names were removed); nothing else in that file changed.
+2. **Windows, where the run could not go, showed defects that Linux cannot show.** All fixed, each seen
+   red before the fix and green after (`pnpm test` on Windows before: 8 or 9 of 226 tests failing in
+   three runs, the count moving with the 5-second limit below):
+   - **The A/B runner could not grade on Windows.** It imported `evals/<skill>/grade.ts` and the mock
+     modules by their path, and Windows reads the `c:` of `C:\…` as a URL scheme. The import error was
+     swallowed into `no grade() in …`, so every arm would have been recorded as ungraded, and `report`
+     then printed `yes (empty: neither run produced one)` for two runs nobody had graded, because
+     `[].every(…)` is true. Both are imported through a file URL now; a failure to load is recorded as
+     `cannot load evals/<skill>/grade.ts (<error code>)` (the code only: the message carries the
+     machine's absolute path), `report` prints it, and without a key for every run the agreement is
+     `n/a` (`runsAgree` and `agreementTrivial` both `null`). New test: `a grade.ts that cannot be
+     loaded is reported as that, and agreement as n/a` (red with the run's `harness/ab.ts`, green now).
+   - **Relative paths were written with `\` on Windows**: `rawTranscript` in `run.json` and the probe's
+     `queriesFile` and `skill.dir`. Both `pathForRecord` functions write `/` on every OS now.
+   - **Tests assumed POSIX**: four assertions on `/` in paths (`test/ab.test.ts`, `test/probe.test.ts`)
+     and one on `SIGKILL` after a timeout (`test/launcher.test.ts`). On Windows `taskkill /T /F` ends
+     the tree and Node reports an exit code and no signal; this contract asks for `timedOut` only.
+   - **Tests assumed a fast start and a checkout under the home directory.** The three timeout tests
+     gave the fake CLI 0.6 s, and on a loaded Windows machine a Node start alone can outlast that, so
+     the child was killed before it wrote its log (`existsSync(log)` false in two of three full runs);
+     they give it 3 s now, against a sleep of 8 s. The control of `run.json records the CLI own
+     arguments only` asserted that the old command line contained `homedir()`, which holds only when
+     the checkout is under it: it failed in a fresh tree under `/tmp` on the host. It asserts the
+     repository's own path now, and the run.json assertions compare paths in their JSON-escaped form
+     (on Windows the raw form, with single backslashes, could never match).
+   - **The end-to-end tests outlived Vitest's 5-second default on Windows**: they start the fake CLI a
+     dozen times, and under the whole suite's parallel load one took 8 s. `vitest.config.ts` sets
+     `testTimeout` to 30 s.
+   - **The probe lost a whole measurement when it could not remove its temporary project.** Found with
+     the real CLI (item 4): after 60 runs of standup-digest, `rmSync` in the `finally` of `probe()`
+     threw `EPERM` (a CLI that had just exited still held the directory; a minute later it could be
+     removed), the error left `probe()` before the results were built, and the probe exited 3 with no
+     file written. `removeProject` retries (`maxRetries: 10`), and if the directory still cannot go it
+     prints `probe: could not remove <dir> (<code>); the results are written, remove it by hand` and
+     the results are written all the same. Two new tests (red with the run's `probe.ts`, which has no
+     such function; green now), and the measurement taken again with the fix: exit 0, nothing left in
+     the OS temp directory.
+   After the fixes, on Windows 11 (Git Bash, Node v24.15.0, pnpm 11.28.0): `pnpm test` `Tests  229
+   passed (229)` three times, `pnpm lint` 61 files, `pnpm typecheck`, `pnpm skills:validate` `3 ok, 0
+   failed, 0 warnings`, and both offline demos (`fetched #101: 2 attachments, 2 ok, 0 failed`;
+   `digest: 26 requests`).
+3. **README corrections.** 「結果」 said every measurement used `sonnet`; the trigger rates used `opus`
+   (as "The measurements (G4)" above says). Two of the three commands under 「`claude` を呼ぶコマンド」
+   did not run as written: `pnpm probe` without the required `--model` and `--out` exits 3, and there
+   is no `pnpm ab` (the runner is `pnpm eval -- run|report`, and the eval file named did not exist).
+   They now use this contract's forms, and each was run once on Windows against the fake CLI
+   (`CLAUDE_BIN`): probe exit 0, both arms `completed` with the grader loaded, `report` exit 0. The
+   README also records the run (「作り方」) and what is listed here.
+4. **Trigger rates on Windows**, measured by the author on 2026-10-05 on the Windows PC (Windows 11, Node
+   v24.15.0, Claude Code 2.1.289, `--model opus` resolved to `claude-opus-5-5`), with the author's own
+   configuration (no `--isolated-config`: the author's personal and plugin skills are siblings too),
+   the same queries and three runs each: `evals/<skill>/results/trigger-2026-10-05-windows.{json,md}`.
+   verifiable-fetch positives 10/10, negatives 9/10, broken 3 (`neg-en-scrape-images` timed out at 240
+   s three times; exit 2); standup-digest 10/10 and 10/10 (measured again after the removal fix above;
+   the first attempt wrote nothing and its cost is not known); skill-trigger-probe 10/10 and 10/10.
+   The CLI version, the resolved model and the configuration all differ from the Linux measurement, so
+   the two are not comparable; the README says so beside the table. The files name only the skills
+   that fired, and the ones that won a negative have generic names (`xlsx`, `code-review`, `dataviz`,
+   `update-config` and three plugin skills); nothing in them was renamed.
+5. **Verified again from a fresh tree on the run's host**, the working tree with every change above
+   unpacked into a new directory under `/tmp`: `pnpm install --frozen-lockfile`, `pnpm test` (`Tests
+   229 passed (229)`, twice), `pnpm lint` (61 files), `pnpm typecheck`, `pnpm skills:validate` (3 ok),
+   `pnpm fetch:demo` (`2 ok, 0 failed`) and `pnpm digest:demo -- --mode collect-only` (`26 requests`);
+   afterwards no listener on 18450-18459 and no temporary directory with one of the repository's
+   prefixes. The first attempt of this check is how the `homedir()` control above was found.

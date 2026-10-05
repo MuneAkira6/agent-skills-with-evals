@@ -52,7 +52,9 @@ const run = async (
 
 describe('every broken reason, produced by a real run of the fake CLI', () => {
   it('timeout: the child is killed and nothing it would have written counts', async () => {
-    const { parsed, log } = await run('trigger', { sleepMs: 8000, timeoutMs: 600 })
+    // 3 s and not 0.6: on a loaded Windows machine a Node start alone can outlast 0.6 s, and the
+    // child must have started (and written its log) before the timeout kills it
+    const { parsed, log } = await run('trigger', { sleepMs: 8000, timeoutMs: 3000 })
     expect(parsed.status).toBe('broken')
     expect(parsed.reason).toBe('timeout')
     expect(existsSync(log)).toBe(true)
@@ -107,7 +109,7 @@ describe('the classification order of SCOPE.md decides every collision', () => {
   })
 
   it('a timeout with no output at all: timeout, not no-init or no-result', async () => {
-    const { parsed } = await run('no-result', { sleepMs: 8000, timeoutMs: 600 })
+    const { parsed } = await run('no-result', { sleepMs: 8000, timeoutMs: 3000 })
     expect(parsed.reason).toBe('timeout')
   })
 

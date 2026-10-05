@@ -23,7 +23,8 @@ import {
   writeFileSync,
 } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { isAbsolute, join, relative, resolve } from 'node:path'
+import { isAbsolute, join, relative, resolve, sep } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { launchClaude } from '../skills/skill-trigger-probe/scripts/lib/claude.ts'
 import { makeRedactor } from '../skills/skill-trigger-probe/scripts/lib/redact.ts'
 import { parseStream } from '../skills/skill-trigger-probe/scripts/lib/stream.ts'
@@ -56,11 +57,12 @@ const abRoot = (): string => process.env.AB_ROOT ?? join(import.meta.dirname, '.
  * A path as `run.json` records it: relative to the repository while it is inside it, so that the
  * committed results of G4 carry `evals/.runs/…` and not this machine's home directory. A path
  * outside the repository (a temporary directory of a test, say) is kept as it is — it names nothing
- * of the machine that a reader must not see.
+ * of the machine that a reader must not see. The relative form is written with `/` on every OS, so a
+ * result measured on Windows reads like one measured on Linux.
  */
 const pathForRecord = (root: string, path: string): string => {
   const rel = relative(root, path)
-  return rel.startsWith('..') || isAbsolute(rel) ? path : rel
+  return rel.startsWith('..') || isAbsolute(rel) ? path : rel.split(sep).join('/')
 }
 
 export type RunOptions = {
@@ -168,12 +170,21 @@ type GraderModule = {
   agreementKey?: (evalId: string, runDir: string) => string
 }
 
-const loadGrader = async (root: string, skill: string): Promise<GraderModule | null> => {
+/**
+ * The suite's grader, or why it could not be loaded. It is imported through a file URL: on Windows
+ * `import('C:\\…\\grade.ts')` reads `c:` as a URL scheme and fails. A failure to load is reported as
+ * that, with the error code only, since the message carries this machine's absolute path.
+ */
+const loadGrader = async (
+  root: string,
+  skill: string,
+): Promise<{ module: GraderModule } | { error: string }> => {
   const path = join(root, 'evals', skill, 'grade.ts')
   try {
-    return (await import(path)) as GraderModule
-  } catch {
-    return null
+    return { module: (await import(pathToFileURL(path).href)) as GraderModule }
+  } catch (err) {
+    const code = (err as NodeJS.ErrnoException).code ?? (err as Error).name
+    return { error: `cannot load evals/${skill}/grade.ts (${code})` }
   }
 }
 
@@ -311,13 +322,16 @@ export const runArm = async (options: RunOptions, out: (line: string) => void): 
     // the mock log or the workspace path can only answer "this cannot be decided".
     writeFileSync(join(runDir, 'run.json'), `${JSON.stringify(runJson, null, 2)}\n`)
 
-    const grader = await loadGrader(root, options.skill)
+    const loaded = await loadGrader(root, options.skill)
+    const grader = 'module' in loaded ? loaded.module : undefined
     let grades: Grade[]
-    let gradingError: string | null = null
+    let gradingError: string | null = 'error' in loaded ? loaded.error : null
     const ungraded = (): Grade[] =>
       evalDef.assertions.map((a) => ({ id: a.id, kind: a.kind, passed: null, evidence: '' }))
-    if (grader?.grade === undefined) {
-      gradingError = `no grade() in ${join('evals', options.skill, 'grade.ts')}`
+    if (grader === undefined) {
+      grades = ungraded()
+    } else if (grader.grade === undefined) {
+      gradingError = `no grade() in evals/${options.skill}/grade.ts`
       grades = ungraded()
     } else {
       try {
@@ -389,7 +403,9 @@ export const report = async (
   options: ReportOptions,
   out: (line: string) => void,
 ): Promise<number> => {
-  const grader = await loadGrader(abRoot(), options.skill)
+  const loaded = await loadGrader(abRoot(), options.skill)
+  if ('error' in loaded) out(`report: ${loaded.error}; the agreement column is n/a`)
+  const grader = 'module' in loaded ? loaded.module : undefined
   const arms: Record<string, unknown>[] = []
   for (const evalId of listDirs(options.out)) {
     for (const arm of listDirs(join(options.out, evalId))) {
@@ -421,6 +437,7 @@ export const report = async (
                 return ''
               }
             })
+      const decided = runs.length >= 2 && keys.length === runs.length
       arms.push({
         eval: evalId,
         arm,
@@ -456,10 +473,12 @@ export const report = async (
         contamination: runs.flatMap((r) => r.runJson.contamination),
         model: runs[0].runJson.model,
         claudeCodeVersion: runs[0].runJson.claudeCodeVersion,
-        runsAgree: runs.length < 2 ? null : keys.length === runs.length && new Set(keys).size === 1,
+        // Without a key for every run (a grader with no agreementKey, or one that could not be
+        // loaded) agreement cannot be decided: n/a, neither "yes" nor "no".
+        runsAgree: decided ? new Set(keys).size === 1 : null,
         // Two runs that produced nothing have the same (empty) key, and "they agree" would be a lie
         // about them. The distinction is reported beside the verdict, not folded into it.
-        agreementTrivial: runs.length < 2 ? null : keys.every((key) => key === ''),
+        agreementTrivial: decided ? keys.every((key) => key === '') : null,
         agreementKeys: keys,
       })
     }

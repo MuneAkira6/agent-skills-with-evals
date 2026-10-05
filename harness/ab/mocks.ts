@@ -3,6 +3,7 @@
 // that the runner works before they exist (G1's toy eval asks for no mock at all).
 
 import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 export type MockLogEntry = {
   server: string
@@ -26,7 +27,8 @@ type Unknown = Record<string, unknown>
 const loadModule = async (abRoot: string, file: string): Promise<Unknown> => {
   const path = join(abRoot, 'harness', 'mocks', file)
   try {
-    return (await import(path)) as Unknown
+    // a file URL, not the path: on Windows `import('C:\\…')` reads `c:` as a URL scheme
+    return (await import(pathToFileURL(path).href)) as Unknown
   } catch (err) {
     throw new Error(`cannot start the mock from ${path}: ${(err as Error).message}`)
   }

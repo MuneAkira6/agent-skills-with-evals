@@ -18,13 +18,14 @@ import {
   cpSync,
   mkdirSync,
   mkdtempSync,
+  type RmOptions,
   readFileSync,
   realpathSync,
   rmSync,
   writeFileSync,
 } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { basename, dirname, isAbsolute, join, relative, resolve } from 'node:path'
+import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { launchClaude } from './lib/claude.ts'
 import type { BrokenReason, ParsedRun } from './lib/stream.ts'
@@ -34,11 +35,30 @@ import { formatReport, validateSkill } from './validate.ts'
 /**
  * A path as the result file records it: relative to the working directory while it is inside it, so
  * that a committed measurement carries `evals/<skill>/trigger.json` and not this machine's home
- * directory. A path outside stays as it is — it names nothing a reader must not see.
+ * directory. A path outside stays as it is — it names nothing a reader must not see. The relative
+ * form is written with `/` on every OS, so a measurement taken on Windows reads like one from Linux.
  */
 const pathForRecord = (path: string): string => {
   const rel = relative(process.cwd(), path)
-  return rel.startsWith('..') || isAbsolute(rel) ? path : rel
+  return rel.startsWith('..') || isAbsolute(rel) ? path : rel.split(sep).join('/')
+}
+
+/**
+ * Removes the temporary project, and never at the cost of the measurement. On Windows a CLI that has
+ * just exited can hold its working directory for a moment (EPERM, EBUSY), so the removal is retried;
+ * if it still fails, the probe says which directory is left and goes on to write the results.
+ */
+export const removeProject = (
+  project: string,
+  out: (line: string) => void,
+  rm: (path: string, options: RmOptions) => void = rmSync,
+): void => {
+  try {
+    rm(project, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 })
+  } catch (err) {
+    const code = (err as NodeJS.ErrnoException).code ?? 'error'
+    out(`probe: could not remove ${project} (${code}); the results are written, remove it by hand`)
+  }
 }
 
 const USAGE = [
@@ -424,7 +444,7 @@ export const probe = async (
       })
     })
   } finally {
-    rmSync(project, { recursive: true, force: true })
+    removeProject(project, out)
   }
 
   records.sort((a, b) => (a.queryId === b.queryId ? a.run - b.run : a.queryId < b.queryId ? -1 : 1))

@@ -1,13 +1,14 @@
 import { spawnSync } from 'node:child_process'
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir, tmpdir } from 'node:os'
-import { dirname, join } from 'node:path'
+import { dirname, join, sep } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { NOTICE } from '../harness/ab.ts'
 import { FAKE_CLI, launchFake, readLog } from './support/fake.ts'
 import { makeTempDir, removeTempDir } from './support/tmp.ts'
 
-const AB = join(import.meta.dirname, '..', 'harness', 'ab.ts')
+const REPO = join(import.meta.dirname, '..')
+const AB = join(REPO, 'harness', 'ab.ts')
 const FIXTURES = join(import.meta.dirname, 'fixtures-ab')
 
 let root: string
@@ -152,12 +153,12 @@ describe('the A/B runner on a toy eval kept under test/', () => {
     })
     const entry = readLog(r.log)[0]
     expect(entry.home.startsWith(join(tmpdir(), 'ab-run-'))).toBe(true)
-    expect(entry.home.endsWith('/home')).toBe(true)
+    expect(entry.home.endsWith(`${sep}home`)).toBe(true)
     expect(entry.claudeConfigDir.startsWith(join(tmpdir(), 'ab-run-'))).toBe(true)
-    expect(entry.claudeConfigDir.endsWith('/cfg')).toBe(true)
+    expect(entry.claudeConfigDir.endsWith(`${sep}cfg`)).toBe(true)
     expect(entry.claudeCallEnvFile).toBe('absent')
     expect(entry.goalbusEnvFile).toBe('absent')
-    expect(entry.cwd.endsWith('/ws')).toBe(true)
+    expect(entry.cwd.endsWith(`${sep}ws`)).toBe(true)
   })
 
   it('writes outputs.json, outputs/, transcript.md, run.json and grading.json', () => {
@@ -215,6 +216,42 @@ describe('the A/B runner on a toy eval kept under test/', () => {
     expect(withArm?.runs).toBe(2)
     expect(withArm?.runsAgree).toBe(true)
     expect(benchmark.arms.find((a) => a.arm === 'without')?.runsAgree).toBeNull()
+  })
+
+  // Found on Windows after the run: the grader was imported by its path, which Windows reads as a URL
+  // with the scheme `c:`, and the failure was swallowed into "no grade()". The report then printed
+  // `yes (empty: …)` for two runs nobody had graded.
+  it('a grade.ts that cannot be loaded is reported as that, and agreement as n/a', () => {
+    const grader = join(abRoot, 'evals', 'toy-skill', 'grade.ts')
+    const kept = readFileSync(grader, 'utf8')
+    writeFileSync(grader, "throw new Error('broken at import')\n")
+    try {
+      const out = join(root, 'out-unloadable-grader')
+      const first = runArm('with', 'arm-clean', { run: 1, out })
+      runArm('with', 'arm-clean', { run: 2, out })
+      const runJson = json<{ gradingError: string | null }>(join(first.runDir, 'run.json'))
+      expect(runJson.gradingError).toBe('cannot load evals/toy-skill/grade.ts (Error)')
+      const grades = json<{ passed: boolean | null }[]>(join(first.runDir, 'grading.json'))
+      expect(grades.map((g) => g.passed)).toEqual([null, null, null])
+      const r = spawnSync(process.execPath, [AB, 'report', '--skill', 'toy-skill', '--out', out], {
+        encoding: 'utf8',
+        env: { ...process.env, AB_ROOT: abRoot },
+      })
+      expect(r.status).toBe(0)
+      expect(r.stdout).toContain(
+        'report: cannot load evals/toy-skill/grade.ts (Error); the agreement column is n/a',
+      )
+      const benchmark = json<{
+        arms: { runsAgree: boolean | null; agreementTrivial: boolean | null }[]
+      }>(join(out, 'benchmark.json'))
+      expect(benchmark.arms[0].runsAgree).toBeNull()
+      expect(benchmark.arms[0].agreementTrivial).toBeNull()
+      expect(readFileSync(join(out, 'benchmark.md'), 'utf8')).toMatch(
+        /^\| toy-write \| with \| 2 \| 0\/4 \|.*\| n\/a \|$/m,
+      )
+    } finally {
+      writeFileSync(grader, kept)
+    }
   })
 
   it('a usage error exits 3', () => {
@@ -343,9 +380,12 @@ describe('the environment-file branch, which every other test above switches off
     expect(readLog(r.log)[0].askev.ASKEV_FROM_FILE).toBe('from-file')
 
     const text = readFileSync(join(r.runDir, 'run.json'), 'utf8')
+    // a path as JSON writes it: on Windows every `\` is doubled, and the raw form would never match
+    const inJson = (path: string): string => JSON.stringify(path).slice(1, -1)
     expect(text).not.toContain('call-env.sh')
-    expect(text).not.toContain(envFile)
+    expect(text).not.toContain(inJson(envFile))
     expect(text).not.toContain(homedir())
+    expect(text).not.toContain(inJson(REPO))
 
     const runJson = json<{ wsPath: string; claudeArgs: string[]; rawTranscript: string }>(
       join(r.runDir, 'run.json'),
@@ -363,8 +403,8 @@ describe('the environment-file branch, which every other test above switches off
     )
 
     // The control: the data the old field carried still exists where the tests read it. This is the
-    // shape run.json used to hold, and every one of the three assertions above would have failed on
-    // it — so they are not vacuous.
+    // shape run.json used to hold, and the assertions above on call-env.sh, the env file and the
+    // repository's path would each have failed on it — so they are not vacuous.
     const control = await launchFake(
       {
         args: ['-p', '--output-format', 'stream-json', '--verbose'],
@@ -378,7 +418,9 @@ describe('the environment-file branch, which every other test above switches off
     expect(control.argv[0]).toBe('bash')
     expect(control.argv[1].endsWith('call-env.sh')).toBe(true)
     expect(control.argv[2]).toBe(envFile)
-    expect(control.argv.join(' ')).toContain(homedir())
+    // the repository's own path, wherever the checkout lives; the home directory is in it only when
+    // the checkout is under it, which a fresh tree under /tmp is not (found after the run)
+    expect(control.argv.join(' ')).toContain(REPO)
   })
 
   it('skillInInit is recorded for both arms, as an observation', () => {

@@ -132,11 +132,14 @@ describe('the launcher, observed through the fake CLI own log', () => {
     const { run, log } = await launch(
       { FAKE_SCENARIO: 'trigger', FAKE_SLEEP_MS: '8000' },
       {
-        timeoutMs: 600,
+        // 3 s and not 0.6: on a loaded Windows machine a Node start alone can outlast 0.6 s
+        timeoutMs: 3000,
       },
     )
     expect(run.timedOut).toBe(true)
-    expect(run.signal).toBe('SIGKILL')
+    // POSIX kills the process group with SIGKILL; on Windows `taskkill /T /F` ends the tree and Node
+    // reports an exit code and no signal. SCOPE.md asks for `timedOut` on both.
+    expect(run.signal).toBe(process.platform === 'win32' ? null : 'SIGKILL')
     expect(run.stdout).toBe('')
     expect(existsSync(log)).toBe(true)
     const parsed = parseStream({
