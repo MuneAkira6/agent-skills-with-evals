@@ -1031,3 +1031,13 @@ Made by a human on 2026-10-05, after the bus had answered DONE; not reviewed by 
    `pnpm fetch:demo` (`2 ok, 0 failed`) and `pnpm digest:demo -- --mode collect-only` (`26 requests`);
    afterwards no listener on 18450-18459 and no temporary directory with one of the repository's
    prefixes. The first attempt of this check is how the `homedir()` control above was found.
+6. **CI on GitHub** (2026-10-06). The repository was pushed to GitHub, and the workflow ran there for
+   the first time on the push of `e44d605`: the Linux job passed and the Windows job failed one test,
+   `prints no environment value` in `test/launcher.test.ts`. It expected the fake CLI to log `home` as
+   `outside-os-temp`; the runner's shell (pwsh) sets no `HOME`, so the fake logged `unset`. Nothing
+   leaked; the test had assumed a `HOME`, as the tests of item 2 had assumed a checkout under it. It now
+   expects `unset` where `HOME` is unset or empty and `outside-os-temp` otherwise. On Windows the run's
+   test failed under `env -u HOME` exactly as on the runner and the new one passes with and without
+   `HOME`; `pnpm test` `Tests  229 passed (229)` twice (once without `HOME`), `pnpm lint` 61 files,
+   `pnpm typecheck`. On GitHub the push of `e7de52e` passed both jobs, each `Tests  229 passed (229)`.
+   README「制約・既知の限界」no longer says that CI has not run on GitHub.
