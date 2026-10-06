@@ -162,7 +162,11 @@ describe('the launcher, observed through the fake CLI own log', () => {
     expect(text).not.toContain(secret)
     expect(run.stdout).not.toContain(secret)
     expect(run.stderr).not.toContain(secret)
-    // the real HOME is outside the OS temp directory and is never written out
-    expect(readLog(log)[0].home).toBe('outside-os-temp')
+    // the real HOME is outside the OS temp directory and is never written out; where the shell sets
+    // no HOME at all (pwsh on a GitHub Windows runner), the log says so instead
+    const home = process.env.HOME
+    expect(readLog(log)[0].home).toBe(
+      home === undefined || home === '' ? 'unset' : 'outside-os-temp',
+    )
   })
 })
